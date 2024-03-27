@@ -1,0 +1,55 @@
+Number of literals: 70
+Constructing lookup tables: [10%] [20%] [30%] [40%] [50%] [60%] [70%] [80%] [90%] [100%]
+Post filtering unreachable actions:  [10%] [20%] [30%] [40%] [50%] [60%] [70%] [80%] [90%] [100%]
+[01;34mNo analytic limits found, not considering limit effects of goal-only operators[00m
+50% of the ground temporal actions in this problem are compression-safe
+Initial heuristic = 28.000, admissible cost estimate 0.000
+b (25.000 | 5.000)b (24.000 | 5.000)
+Resorting to best-first search
+Running WA* with W = 5.000, not restarting with goal states
+b (25.000 | 5.000)b (24.000 | 5.000)b (24.000 | 4.001)b (23.000 | 6.002)b (22.000 | 19.007)b (21.000 | 19.007)b (20.000 | 41.015)b (20.000 | 26.007)b (20.000 | 22.007)b (19.000 | 27.008)b (18.000 | 27.008)b (17.000 | 35.012)b (16.000 | 38.013)b (15.000 | 60.020)b (14.000 | 63.023)b (11.000 | 79.027)b (10.000 | 79.028)b (8.000 | 82.029)b (7.000 | 88.031)b (5.000 | 110.037)b (4.000 | 118.039)b (4.000 | 114.039)b (2.000 | 119.040)b (1.000 | 119.040)(G);;;; Solution Found
+; States evaluated: 4973
+; Cost: 120.041
+; Time 23.78
+0.000: (load-empty agent1 carrier1 box2 central_warehouse q4 q3)  [2.000]
+2.001: (fill agent1 box3 tool central_warehouse)  [1.000]
+3.002: (load-filled agent1 carrier1 box3 central_warehouse q3 q2 q0 q1 tool)  [3.000]
+6.003: (load-empty agent1 carrier1 box1 central_warehouse q2 q1)  [2.000]
+8.004: (move-carrier-to-workstations agent1 carrier1 central_warehouse loc1)  [5.000]
+13.005: (unload-filled agent1 carrier1 box3 loc1 q1 q2 q1 q0 tool)  [3.000]
+16.006: (empty agent1 box3 tool ws1 loc1)  [1.000]
+17.007: (load-empty agent1 carrier1 box3 loc1 q2 q1)  [2.000]
+19.008: (move-carrier-to-warehouse agent1 carrier1 loc1 central_warehouse)  [5.000]
+24.009: (unload-empty agent1 carrier1 box2 central_warehouse q1 q2)  [2.000]
+26.010: (fill agent1 box2 bolt central_warehouse)  [1.000]
+27.011: (load-filled agent1 carrier1 box2 central_warehouse q2 q1 q0 q1 bolt)  [3.000]
+30.012: (move-carrier-to-workstations agent1 carrier1 central_warehouse loc2)  [5.000]
+35.013: (unload-filled agent1 carrier1 box2 loc2 q1 q2 q1 q0 bolt)  [3.000]
+38.014: (empty agent1 box2 bolt ws3 loc2)  [1.000]
+39.015: (load-empty agent1 carrier1 box2 loc2 q2 q1)  [2.000]
+41.016: (move-carrier-to-warehouse agent1 carrier1 loc2 central_warehouse)  [5.000]
+46.017: (unload-empty agent1 carrier1 box2 central_warehouse q1 q2)  [2.000]
+48.018: (fill agent1 box2 tool central_warehouse)  [1.000]
+49.019: (load-filled agent1 carrier1 box2 central_warehouse q2 q1 q0 q1 tool)  [3.000]
+52.020: (move-carrier-to-workstations agent1 carrier1 central_warehouse loc2)  [5.000]
+57.021: (unload-filled agent1 carrier1 box2 loc2 q1 q2 q1 q0 tool)  [3.000]
+60.022: (empty agent1 box2 tool ws3 loc2)  [1.000]
+61.023: (load-empty agent1 carrier1 box2 loc2 q2 q1)  [2.000]
+63.024: (move-carrier-to-warehouse agent1 carrier1 loc2 central_warehouse)  [5.000]
+68.025: (unload-empty agent1 carrier1 box2 central_warehouse q1 q2)  [2.000]
+70.026: (fill agent1 box2 valve central_warehouse)  [1.000]
+71.027: (load-filled agent1 carrier1 box2 central_warehouse q2 q1 q0 q1 valve)  [3.000]
+74.028: (move-carrier-to-workstations agent1 carrier1 central_warehouse loc2)  [5.000]
+79.029: (move-carrier-to-workstations agent1 carrier1 loc2 loc3)  [5.000]
+84.030: (unload-filled agent1 carrier1 box2 loc3 q1 q2 q1 q0 valve)  [3.000]
+87.031: (unload-empty agent1 carrier1 box1 loc3 q2 q3)  [2.000]
+89.032: (move-carrier-to-workstations agent1 carrier1 loc3 loc2)  [5.000]
+94.033: (move-carrier-to-warehouse agent1 carrier1 loc2 central_warehouse)  [5.000]
+99.034: (unload-empty agent1 carrier1 box3 central_warehouse q3 q4)  [2.000]
+101.035: (fill agent1 box3 valve central_warehouse)  [1.000]
+102.036: (load-filled agent1 carrier1 box3 central_warehouse q4 q3 q0 q1 valve)  [3.000]
+105.037: (move-carrier-to-workstations agent1 carrier1 central_warehouse loc2)  [5.000]
+110.038: (unload-filled agent1 carrier1 box3 loc2 q3 q4 q1 q0 valve)  [3.000]
+113.039: (empty agent1 box3 valve ws3 loc2)  [1.000]
+114.040: (move-carrier-to-workstations agent1 carrier1 loc2 loc3)  [5.000]
+119.041: (empty agent1 box2 valve ws4 loc3)  [1.000]

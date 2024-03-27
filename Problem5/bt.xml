@@ -1,0 +1,568 @@
+<root BTCPP_format="4" main_tree_to_execute="MainTree">
+  <BehaviorTree ID="MainTree">
+    <Sequence name="(load_empty agent1 carrier1 box2 central_warehouse q4 q3):0">
+      <Sequence name="(load_empty agent1 carrier1 box2 central_warehouse q4 q3):0">
+        <WaitAtStartReq action="(load_empty agent1 carrier1 box2 central_warehouse q4 q3):0"/>
+        <ApplyAtStartEffect action="(load_empty agent1 carrier1 box2 central_warehouse q4 q3):0"/>
+        <ReactiveSequence name="(load_empty agent1 carrier1 box2 central_warehouse q4 q3):0">
+          <CheckOverAllReq action="(load_empty agent1 carrier1 box2 central_warehouse q4 q3):0"/>
+          <ExecuteAction action="(load_empty agent1 carrier1 box2 central_warehouse q4 q3):0"/>
+        </ReactiveSequence>
+        <CheckAtEndReq action="(load_empty agent1 carrier1 box2 central_warehouse q4 q3):0"/>
+        <ApplyAtEndEffect action="(load_empty agent1 carrier1 box2 central_warehouse q4 q3):0"/>
+      </Sequence>
+      <Sequence name="(fill agent1 box3 tool central_warehouse):2000">
+        <Sequence name="(fill agent1 box3 tool central_warehouse):2000">
+          <WaitAction action="(load_empty agent1 carrier1 box2 central_warehouse q4 q3):0"/>
+          <WaitAtStartReq action="(fill agent1 box3 tool central_warehouse):2000"/>
+          <ApplyAtStartEffect action="(fill agent1 box3 tool central_warehouse):2000"/>
+          <ReactiveSequence name="(fill agent1 box3 tool central_warehouse):2000">
+            <CheckOverAllReq action="(fill agent1 box3 tool central_warehouse):2000"/>
+            <ExecuteAction action="(fill agent1 box3 tool central_warehouse):2000"/>
+          </ReactiveSequence>
+          <CheckAtEndReq action="(fill agent1 box3 tool central_warehouse):2000"/>
+          <ApplyAtEndEffect action="(fill agent1 box3 tool central_warehouse):2000"/>
+        </Sequence>
+        <Sequence name="(load_filled agent1 carrier1 box3 central_warehouse q3 q2 q0 q1 tool):3002">
+          <Sequence name="(load_filled agent1 carrier1 box3 central_warehouse q3 q2 q0 q1 tool):3002">
+            <WaitAction action="(fill agent1 box3 tool central_warehouse):2000"/>
+            <WaitAtStartReq action="(load_filled agent1 carrier1 box3 central_warehouse q3 q2 q0 q1 tool):3002"/>
+            <ApplyAtStartEffect action="(load_filled agent1 carrier1 box3 central_warehouse q3 q2 q0 q1 tool):3002"/>
+            <ReactiveSequence name="(load_filled agent1 carrier1 box3 central_warehouse q3 q2 q0 q1 tool):3002">
+              <CheckOverAllReq action="(load_filled agent1 carrier1 box3 central_warehouse q3 q2 q0 q1 tool):3002"/>
+              <ExecuteAction action="(load_filled agent1 carrier1 box3 central_warehouse q3 q2 q0 q1 tool):3002"/>
+            </ReactiveSequence>
+            <CheckAtEndReq action="(load_filled agent1 carrier1 box3 central_warehouse q3 q2 q0 q1 tool):3002"/>
+            <ApplyAtEndEffect action="(load_filled agent1 carrier1 box3 central_warehouse q3 q2 q0 q1 tool):3002"/>
+          </Sequence>
+          <Sequence name="(load_empty agent1 carrier1 box1 central_warehouse q2 q1):6003">
+            <Sequence name="(load_empty agent1 carrier1 box1 central_warehouse q2 q1):6003">
+              <WaitAction action="(load_filled agent1 carrier1 box3 central_warehouse q3 q2 q0 q1 tool):3002"/>
+              <WaitAtStartReq action="(load_empty agent1 carrier1 box1 central_warehouse q2 q1):6003"/>
+              <ApplyAtStartEffect action="(load_empty agent1 carrier1 box1 central_warehouse q2 q1):6003"/>
+              <ReactiveSequence name="(load_empty agent1 carrier1 box1 central_warehouse q2 q1):6003">
+                <CheckOverAllReq action="(load_empty agent1 carrier1 box1 central_warehouse q2 q1):6003"/>
+                <ExecuteAction action="(load_empty agent1 carrier1 box1 central_warehouse q2 q1):6003"/>
+              </ReactiveSequence>
+              <CheckAtEndReq action="(load_empty agent1 carrier1 box1 central_warehouse q2 q1):6003"/>
+              <ApplyAtEndEffect action="(load_empty agent1 carrier1 box1 central_warehouse q2 q1):6003"/>
+            </Sequence>
+            <Sequence name="(move_carrier_to_workstations agent1 carrier1 central_warehouse loc1):8003">
+              <Sequence name="(move_carrier_to_workstations agent1 carrier1 central_warehouse loc1):8003">
+                <WaitAction action="(load_empty agent1 carrier1 box1 central_warehouse q2 q1):6003"/>
+                <WaitAtStartReq action="(move_carrier_to_workstations agent1 carrier1 central_warehouse loc1):8003"/>
+                <ApplyAtStartEffect action="(move_carrier_to_workstations agent1 carrier1 central_warehouse loc1):8003"/>
+                <ReactiveSequence name="(move_carrier_to_workstations agent1 carrier1 central_warehouse loc1):8003">
+                  <CheckOverAllReq action="(move_carrier_to_workstations agent1 carrier1 central_warehouse loc1):8003"/>
+                  <ExecuteAction action="(move_carrier_to_workstations agent1 carrier1 central_warehouse loc1):8003"/>
+                </ReactiveSequence>
+                <CheckAtEndReq action="(move_carrier_to_workstations agent1 carrier1 central_warehouse loc1):8003"/>
+                <ApplyAtEndEffect action="(move_carrier_to_workstations agent1 carrier1 central_warehouse loc1):8003"/>
+              </Sequence>
+              <Sequence name="(unload_filled agent1 carrier1 box3 loc1 q1 q2 q1 q0 tool):13005">
+                <Sequence name="(unload_filled agent1 carrier1 box3 loc1 q1 q2 q1 q0 tool):13005">
+                  <WaitAction action="(move_carrier_to_workstations agent1 carrier1 central_warehouse loc1):8003"/>
+                  <WaitAction action="(fill agent1 box3 tool central_warehouse):2000"/>
+                  <WaitAtStartReq action="(unload_filled agent1 carrier1 box3 loc1 q1 q2 q1 q0 tool):13005"/>
+                  <ApplyAtStartEffect action="(unload_filled agent1 carrier1 box3 loc1 q1 q2 q1 q0 tool):13005"/>
+                  <ReactiveSequence name="(unload_filled agent1 carrier1 box3 loc1 q1 q2 q1 q0 tool):13005">
+                    <CheckOverAllReq action="(unload_filled agent1 carrier1 box3 loc1 q1 q2 q1 q0 tool):13005"/>
+                    <ExecuteAction action="(unload_filled agent1 carrier1 box3 loc1 q1 q2 q1 q0 tool):13005"/>
+                  </ReactiveSequence>
+                  <CheckAtEndReq action="(unload_filled agent1 carrier1 box3 loc1 q1 q2 q1 q0 tool):13005"/>
+                  <ApplyAtEndEffect action="(unload_filled agent1 carrier1 box3 loc1 q1 q2 q1 q0 tool):13005"/>
+                </Sequence>
+                <Sequence name="(empty agent1 box3 tool ws1 loc1):16006">
+                  <Sequence name="(empty agent1 box3 tool ws1 loc1):16006">
+                    <WaitAction action="(unload_filled agent1 carrier1 box3 loc1 q1 q2 q1 q0 tool):13005"/>
+                    <WaitAtStartReq action="(empty agent1 box3 tool ws1 loc1):16006"/>
+                    <ApplyAtStartEffect action="(empty agent1 box3 tool ws1 loc1):16006"/>
+                    <ReactiveSequence name="(empty agent1 box3 tool ws1 loc1):16006">
+                      <CheckOverAllReq action="(empty agent1 box3 tool ws1 loc1):16006"/>
+                      <ExecuteAction action="(empty agent1 box3 tool ws1 loc1):16006"/>
+                    </ReactiveSequence>
+                    <CheckAtEndReq action="(empty agent1 box3 tool ws1 loc1):16006"/>
+                    <ApplyAtEndEffect action="(empty agent1 box3 tool ws1 loc1):16006"/>
+                  </Sequence>
+                  <Sequence name="(load_empty agent1 carrier1 box3 loc1 q2 q1):17007">
+                    <Sequence name="(load_empty agent1 carrier1 box3 loc1 q2 q1):17007">
+                      <WaitAction action="(empty agent1 box3 tool ws1 loc1):16006"/>
+                      <WaitAtStartReq action="(load_empty agent1 carrier1 box3 loc1 q2 q1):17007"/>
+                      <ApplyAtStartEffect action="(load_empty agent1 carrier1 box3 loc1 q2 q1):17007"/>
+                      <ReactiveSequence name="(load_empty agent1 carrier1 box3 loc1 q2 q1):17007">
+                        <CheckOverAllReq action="(load_empty agent1 carrier1 box3 loc1 q2 q1):17007"/>
+                        <ExecuteAction action="(load_empty agent1 carrier1 box3 loc1 q2 q1):17007"/>
+                      </ReactiveSequence>
+                      <CheckAtEndReq action="(load_empty agent1 carrier1 box3 loc1 q2 q1):17007"/>
+                      <ApplyAtEndEffect action="(load_empty agent1 carrier1 box3 loc1 q2 q1):17007"/>
+                    </Sequence>
+                    <Sequence name="(move_carrier_to_warehouse agent1 carrier1 loc1 central_warehouse q0):19008">
+                      <Sequence name="(move_carrier_to_warehouse agent1 carrier1 loc1 central_warehouse q0):19008">
+                        <WaitAction action="(load_empty agent1 carrier1 box3 loc1 q2 q1):17007"/>
+                        <WaitAtStartReq action="(move_carrier_to_warehouse agent1 carrier1 loc1 central_warehouse q0):19008"/>
+                        <ApplyAtStartEffect action="(move_carrier_to_warehouse agent1 carrier1 loc1 central_warehouse q0):19008"/>
+                        <ReactiveSequence name="(move_carrier_to_warehouse agent1 carrier1 loc1 central_warehouse q0):19008">
+                          <CheckOverAllReq action="(move_carrier_to_warehouse agent1 carrier1 loc1 central_warehouse q0):19008"/>
+                          <ExecuteAction action="(move_carrier_to_warehouse agent1 carrier1 loc1 central_warehouse q0):19008"/>
+                        </ReactiveSequence>
+                        <CheckAtEndReq action="(move_carrier_to_warehouse agent1 carrier1 loc1 central_warehouse q0):19008"/>
+                        <ApplyAtEndEffect action="(move_carrier_to_warehouse agent1 carrier1 loc1 central_warehouse q0):19008"/>
+                      </Sequence>
+                      <Sequence name="(unload_empty agent1 carrier1 box2 central_warehouse q1 q2):24009">
+                        <Sequence name="(unload_empty agent1 carrier1 box2 central_warehouse q1 q2):24009">
+                          <WaitAction action="(move_carrier_to_warehouse agent1 carrier1 loc1 central_warehouse q0):19008"/>
+                          <WaitAction action="(move_carrier_to_workstations agent1 carrier1 central_warehouse loc1):8003"/>
+                          <WaitAtStartReq action="(unload_empty agent1 carrier1 box2 central_warehouse q1 q2):24009"/>
+                          <ApplyAtStartEffect action="(unload_empty agent1 carrier1 box2 central_warehouse q1 q2):24009"/>
+                          <ReactiveSequence name="(unload_empty agent1 carrier1 box2 central_warehouse q1 q2):24009">
+                            <CheckOverAllReq action="(unload_empty agent1 carrier1 box2 central_warehouse q1 q2):24009"/>
+                            <ExecuteAction action="(unload_empty agent1 carrier1 box2 central_warehouse q1 q2):24009"/>
+                          </ReactiveSequence>
+                          <CheckAtEndReq action="(unload_empty agent1 carrier1 box2 central_warehouse q1 q2):24009"/>
+                          <ApplyAtEndEffect action="(unload_empty agent1 carrier1 box2 central_warehouse q1 q2):24009"/>
+                        </Sequence>
+                        <Sequence name="(fill agent1 box2 bolt central_warehouse):26010">
+                          <Sequence name="(fill agent1 box2 bolt central_warehouse):26010">
+                            <WaitAction action="(unload_empty agent1 carrier1 box2 central_warehouse q1 q2):24009"/>
+                            <WaitAction action="(load_empty agent1 carrier1 box2 central_warehouse q4 q3):0"/>
+                            <WaitAtStartReq action="(fill agent1 box2 bolt central_warehouse):26010"/>
+                            <ApplyAtStartEffect action="(fill agent1 box2 bolt central_warehouse):26010"/>
+                            <ReactiveSequence name="(fill agent1 box2 bolt central_warehouse):26010">
+                              <CheckOverAllReq action="(fill agent1 box2 bolt central_warehouse):26010"/>
+                              <ExecuteAction action="(fill agent1 box2 bolt central_warehouse):26010"/>
+                            </ReactiveSequence>
+                            <CheckAtEndReq action="(fill agent1 box2 bolt central_warehouse):26010"/>
+                            <ApplyAtEndEffect action="(fill agent1 box2 bolt central_warehouse):26010"/>
+                          </Sequence>
+                          <Sequence name="(load_filled agent1 carrier1 box2 central_warehouse q2 q1 q0 q1 bolt):27011">
+                            <Sequence name="(load_filled agent1 carrier1 box2 central_warehouse q2 q1 q0 q1 bolt):27011">
+                              <WaitAction action="(fill agent1 box2 bolt central_warehouse):26010"/>
+                              <WaitAtStartReq action="(load_filled agent1 carrier1 box2 central_warehouse q2 q1 q0 q1 bolt):27011"/>
+                              <ApplyAtStartEffect action="(load_filled agent1 carrier1 box2 central_warehouse q2 q1 q0 q1 bolt):27011"/>
+                              <ReactiveSequence name="(load_filled agent1 carrier1 box2 central_warehouse q2 q1 q0 q1 bolt):27011">
+                                <CheckOverAllReq action="(load_filled agent1 carrier1 box2 central_warehouse q2 q1 q0 q1 bolt):27011"/>
+                                <ExecuteAction action="(load_filled agent1 carrier1 box2 central_warehouse q2 q1 q0 q1 bolt):27011"/>
+                              </ReactiveSequence>
+                              <CheckAtEndReq action="(load_filled agent1 carrier1 box2 central_warehouse q2 q1 q0 q1 bolt):27011"/>
+                              <ApplyAtEndEffect action="(load_filled agent1 carrier1 box2 central_warehouse q2 q1 q0 q1 bolt):27011"/>
+                            </Sequence>
+                            <Sequence name="(move_carrier_to_workstations agent1 carrier1 central_warehouse loc2):30012">
+                              <Sequence name="(move_carrier_to_workstations agent1 carrier1 central_warehouse loc2):30012">
+                                <WaitAction action="(load_filled agent1 carrier1 box2 central_warehouse q2 q1 q0 q1 bolt):27011"/>
+                                <WaitAtStartReq action="(move_carrier_to_workstations agent1 carrier1 central_warehouse loc2):30012"/>
+                                <ApplyAtStartEffect action="(move_carrier_to_workstations agent1 carrier1 central_warehouse loc2):30012"/>
+                                <ReactiveSequence name="(move_carrier_to_workstations agent1 carrier1 central_warehouse loc2):30012">
+                                  <CheckOverAllReq action="(move_carrier_to_workstations agent1 carrier1 central_warehouse loc2):30012"/>
+                                  <ExecuteAction action="(move_carrier_to_workstations agent1 carrier1 central_warehouse loc2):30012"/>
+                                </ReactiveSequence>
+                                <CheckAtEndReq action="(move_carrier_to_workstations agent1 carrier1 central_warehouse loc2):30012"/>
+                                <ApplyAtEndEffect action="(move_carrier_to_workstations agent1 carrier1 central_warehouse loc2):30012"/>
+                              </Sequence>
+                              <Sequence name="(unload_filled agent1 carrier1 box2 loc2 q1 q2 q1 q0 bolt):35013">
+                                <Sequence name="(unload_filled agent1 carrier1 box2 loc2 q1 q2 q1 q0 bolt):35013">
+                                  <WaitAction action="(move_carrier_to_workstations agent1 carrier1 central_warehouse loc2):30012"/>
+                                  <WaitAction action="(fill agent1 box2 bolt central_warehouse):26010"/>
+                                  <WaitAtStartReq action="(unload_filled agent1 carrier1 box2 loc2 q1 q2 q1 q0 bolt):35013"/>
+                                  <ApplyAtStartEffect action="(unload_filled agent1 carrier1 box2 loc2 q1 q2 q1 q0 bolt):35013"/>
+                                  <ReactiveSequence name="(unload_filled agent1 carrier1 box2 loc2 q1 q2 q1 q0 bolt):35013">
+                                    <CheckOverAllReq action="(unload_filled agent1 carrier1 box2 loc2 q1 q2 q1 q0 bolt):35013"/>
+                                    <ExecuteAction action="(unload_filled agent1 carrier1 box2 loc2 q1 q2 q1 q0 bolt):35013"/>
+                                  </ReactiveSequence>
+                                  <CheckAtEndReq action="(unload_filled agent1 carrier1 box2 loc2 q1 q2 q1 q0 bolt):35013"/>
+                                  <ApplyAtEndEffect action="(unload_filled agent1 carrier1 box2 loc2 q1 q2 q1 q0 bolt):35013"/>
+                                </Sequence>
+                                <Sequence name="(empty agent1 box2 bolt ws3 loc2):38014">
+                                  <Sequence name="(empty agent1 box2 bolt ws3 loc2):38014">
+                                    <WaitAction action="(unload_filled agent1 carrier1 box2 loc2 q1 q2 q1 q0 bolt):35013"/>
+                                    <WaitAtStartReq action="(empty agent1 box2 bolt ws3 loc2):38014"/>
+                                    <ApplyAtStartEffect action="(empty agent1 box2 bolt ws3 loc2):38014"/>
+                                    <ReactiveSequence name="(empty agent1 box2 bolt ws3 loc2):38014">
+                                      <CheckOverAllReq action="(empty agent1 box2 bolt ws3 loc2):38014"/>
+                                      <ExecuteAction action="(empty agent1 box2 bolt ws3 loc2):38014"/>
+                                    </ReactiveSequence>
+                                    <CheckAtEndReq action="(empty agent1 box2 bolt ws3 loc2):38014"/>
+                                    <ApplyAtEndEffect action="(empty agent1 box2 bolt ws3 loc2):38014"/>
+                                  </Sequence>
+                                  <Sequence name="(load_empty agent1 carrier1 box2 loc2 q2 q1):39015">
+                                    <Sequence name="(load_empty agent1 carrier1 box2 loc2 q2 q1):39015">
+                                      <WaitAction action="(empty agent1 box2 bolt ws3 loc2):38014"/>
+                                      <WaitAtStartReq action="(load_empty agent1 carrier1 box2 loc2 q2 q1):39015"/>
+                                      <ApplyAtStartEffect action="(load_empty agent1 carrier1 box2 loc2 q2 q1):39015"/>
+                                      <ReactiveSequence name="(load_empty agent1 carrier1 box2 loc2 q2 q1):39015">
+                                        <CheckOverAllReq action="(load_empty agent1 carrier1 box2 loc2 q2 q1):39015"/>
+                                        <ExecuteAction action="(load_empty agent1 carrier1 box2 loc2 q2 q1):39015"/>
+                                      </ReactiveSequence>
+                                      <CheckAtEndReq action="(load_empty agent1 carrier1 box2 loc2 q2 q1):39015"/>
+                                      <ApplyAtEndEffect action="(load_empty agent1 carrier1 box2 loc2 q2 q1):39015"/>
+                                    </Sequence>
+                                    <Sequence name="(move_carrier_to_warehouse agent1 carrier1 loc2 central_warehouse q0):41016">
+                                      <Sequence name="(move_carrier_to_warehouse agent1 carrier1 loc2 central_warehouse q0):41016">
+                                        <WaitAction action="(load_empty agent1 carrier1 box2 loc2 q2 q1):39015"/>
+                                        <WaitAtStartReq action="(move_carrier_to_warehouse agent1 carrier1 loc2 central_warehouse q0):41016"/>
+                                        <ApplyAtStartEffect action="(move_carrier_to_warehouse agent1 carrier1 loc2 central_warehouse q0):41016"/>
+                                        <ReactiveSequence name="(move_carrier_to_warehouse agent1 carrier1 loc2 central_warehouse q0):41016">
+                                          <CheckOverAllReq action="(move_carrier_to_warehouse agent1 carrier1 loc2 central_warehouse q0):41016"/>
+                                          <ExecuteAction action="(move_carrier_to_warehouse agent1 carrier1 loc2 central_warehouse q0):41016"/>
+                                        </ReactiveSequence>
+                                        <CheckAtEndReq action="(move_carrier_to_warehouse agent1 carrier1 loc2 central_warehouse q0):41016"/>
+                                        <ApplyAtEndEffect action="(move_carrier_to_warehouse agent1 carrier1 loc2 central_warehouse q0):41016"/>
+                                      </Sequence>
+                                      <Sequence name="(unload_empty agent1 carrier1 box2 central_warehouse q1 q2):46017">
+                                        <Sequence name="(unload_empty agent1 carrier1 box2 central_warehouse q1 q2):46017">
+                                          <WaitAction action="(move_carrier_to_warehouse agent1 carrier1 loc2 central_warehouse q0):41016"/>
+                                          <WaitAction action="(empty agent1 box2 bolt ws3 loc2):38014"/>
+                                          <WaitAction action="(unload_empty agent1 carrier1 box2 central_warehouse q1 q2):24009"/>
+                                          <WaitAtStartReq action="(unload_empty agent1 carrier1 box2 central_warehouse q1 q2):46017"/>
+                                          <ApplyAtStartEffect action="(unload_empty agent1 carrier1 box2 central_warehouse q1 q2):46017"/>
+                                          <ReactiveSequence name="(unload_empty agent1 carrier1 box2 central_warehouse q1 q2):46017">
+                                            <CheckOverAllReq action="(unload_empty agent1 carrier1 box2 central_warehouse q1 q2):46017"/>
+                                            <ExecuteAction action="(unload_empty agent1 carrier1 box2 central_warehouse q1 q2):46017"/>
+                                          </ReactiveSequence>
+                                          <CheckAtEndReq action="(unload_empty agent1 carrier1 box2 central_warehouse q1 q2):46017"/>
+                                          <ApplyAtEndEffect action="(unload_empty agent1 carrier1 box2 central_warehouse q1 q2):46017"/>
+                                        </Sequence>
+                                        <Sequence name="(fill agent1 box2 tool central_warehouse):48018">
+                                          <Sequence name="(fill agent1 box2 tool central_warehouse):48018">
+                                            <WaitAction action="(unload_empty agent1 carrier1 box2 central_warehouse q1 q2):46017"/>
+                                            <WaitAction action="(fill agent1 box2 bolt central_warehouse):26010"/>
+                                            <WaitAtStartReq action="(fill agent1 box2 tool central_warehouse):48018"/>
+                                            <ApplyAtStartEffect action="(fill agent1 box2 tool central_warehouse):48018"/>
+                                            <ReactiveSequence name="(fill agent1 box2 tool central_warehouse):48018">
+                                              <CheckOverAllReq action="(fill agent1 box2 tool central_warehouse):48018"/>
+                                              <ExecuteAction action="(fill agent1 box2 tool central_warehouse):48018"/>
+                                            </ReactiveSequence>
+                                            <CheckAtEndReq action="(fill agent1 box2 tool central_warehouse):48018"/>
+                                            <ApplyAtEndEffect action="(fill agent1 box2 tool central_warehouse):48018"/>
+                                          </Sequence>
+                                          <Sequence name="(load_filled agent1 carrier1 box2 central_warehouse q2 q1 q0 q1 tool):49019">
+                                            <Sequence name="(load_filled agent1 carrier1 box2 central_warehouse q2 q1 q0 q1 tool):49019">
+                                              <WaitAction action="(fill agent1 box2 tool central_warehouse):48018"/>
+                                              <WaitAtStartReq action="(load_filled agent1 carrier1 box2 central_warehouse q2 q1 q0 q1 tool):49019"/>
+                                              <ApplyAtStartEffect action="(load_filled agent1 carrier1 box2 central_warehouse q2 q1 q0 q1 tool):49019"/>
+                                              <ReactiveSequence name="(load_filled agent1 carrier1 box2 central_warehouse q2 q1 q0 q1 tool):49019">
+                                                <CheckOverAllReq action="(load_filled agent1 carrier1 box2 central_warehouse q2 q1 q0 q1 tool):49019"/>
+                                                <ExecuteAction action="(load_filled agent1 carrier1 box2 central_warehouse q2 q1 q0 q1 tool):49019"/>
+                                              </ReactiveSequence>
+                                              <CheckAtEndReq action="(load_filled agent1 carrier1 box2 central_warehouse q2 q1 q0 q1 tool):49019"/>
+                                              <ApplyAtEndEffect action="(load_filled agent1 carrier1 box2 central_warehouse q2 q1 q0 q1 tool):49019"/>
+                                            </Sequence>
+                                            <Sequence name="(move_carrier_to_workstations agent1 carrier1 central_warehouse loc2):52020">
+                                              <Sequence name="(move_carrier_to_workstations agent1 carrier1 central_warehouse loc2):52020">
+                                                <WaitAction action="(load_filled agent1 carrier1 box2 central_warehouse q2 q1 q0 q1 tool):49019"/>
+                                                <WaitAtStartReq action="(move_carrier_to_workstations agent1 carrier1 central_warehouse loc2):52020"/>
+                                                <ApplyAtStartEffect action="(move_carrier_to_workstations agent1 carrier1 central_warehouse loc2):52020"/>
+                                                <ReactiveSequence name="(move_carrier_to_workstations agent1 carrier1 central_warehouse loc2):52020">
+                                                  <CheckOverAllReq action="(move_carrier_to_workstations agent1 carrier1 central_warehouse loc2):52020"/>
+                                                  <ExecuteAction action="(move_carrier_to_workstations agent1 carrier1 central_warehouse loc2):52020"/>
+                                                </ReactiveSequence>
+                                                <CheckAtEndReq action="(move_carrier_to_workstations agent1 carrier1 central_warehouse loc2):52020"/>
+                                                <ApplyAtEndEffect action="(move_carrier_to_workstations agent1 carrier1 central_warehouse loc2):52020"/>
+                                              </Sequence>
+                                              <Sequence name="(unload_filled agent1 carrier1 box2 loc2 q1 q2 q1 q0 tool):57021">
+                                                <Sequence name="(unload_filled agent1 carrier1 box2 loc2 q1 q2 q1 q0 tool):57021">
+                                                  <WaitAction action="(move_carrier_to_workstations agent1 carrier1 central_warehouse loc2):52020"/>
+                                                  <WaitAction action="(fill agent1 box2 tool central_warehouse):48018"/>
+                                                  <WaitAtStartReq action="(unload_filled agent1 carrier1 box2 loc2 q1 q2 q1 q0 tool):57021"/>
+                                                  <ApplyAtStartEffect action="(unload_filled agent1 carrier1 box2 loc2 q1 q2 q1 q0 tool):57021"/>
+                                                  <ReactiveSequence name="(unload_filled agent1 carrier1 box2 loc2 q1 q2 q1 q0 tool):57021">
+                                                    <CheckOverAllReq action="(unload_filled agent1 carrier1 box2 loc2 q1 q2 q1 q0 tool):57021"/>
+                                                    <ExecuteAction action="(unload_filled agent1 carrier1 box2 loc2 q1 q2 q1 q0 tool):57021"/>
+                                                  </ReactiveSequence>
+                                                  <CheckAtEndReq action="(unload_filled agent1 carrier1 box2 loc2 q1 q2 q1 q0 tool):57021"/>
+                                                  <ApplyAtEndEffect action="(unload_filled agent1 carrier1 box2 loc2 q1 q2 q1 q0 tool):57021"/>
+                                                </Sequence>
+                                                <Sequence name="(empty agent1 box2 tool ws3 loc2):60022">
+                                                  <Sequence name="(empty agent1 box2 tool ws3 loc2):60022">
+                                                    <WaitAction action="(unload_filled agent1 carrier1 box2 loc2 q1 q2 q1 q0 tool):57021"/>
+                                                    <WaitAtStartReq action="(empty agent1 box2 tool ws3 loc2):60022"/>
+                                                    <ApplyAtStartEffect action="(empty agent1 box2 tool ws3 loc2):60022"/>
+                                                    <ReactiveSequence name="(empty agent1 box2 tool ws3 loc2):60022">
+                                                      <CheckOverAllReq action="(empty agent1 box2 tool ws3 loc2):60022"/>
+                                                      <ExecuteAction action="(empty agent1 box2 tool ws3 loc2):60022"/>
+                                                    </ReactiveSequence>
+                                                    <CheckAtEndReq action="(empty agent1 box2 tool ws3 loc2):60022"/>
+                                                    <ApplyAtEndEffect action="(empty agent1 box2 tool ws3 loc2):60022"/>
+                                                  </Sequence>
+                                                  <Sequence name="(load_empty agent1 carrier1 box2 loc2 q2 q1):61023">
+                                                    <Sequence name="(load_empty agent1 carrier1 box2 loc2 q2 q1):61023">
+                                                      <WaitAction action="(empty agent1 box2 tool ws3 loc2):60022"/>
+                                                      <WaitAction action="(load_empty agent1 carrier1 box2 loc2 q2 q1):39015"/>
+                                                      <WaitAtStartReq action="(load_empty agent1 carrier1 box2 loc2 q2 q1):61023"/>
+                                                      <ApplyAtStartEffect action="(load_empty agent1 carrier1 box2 loc2 q2 q1):61023"/>
+                                                      <ReactiveSequence name="(load_empty agent1 carrier1 box2 loc2 q2 q1):61023">
+                                                        <CheckOverAllReq action="(load_empty agent1 carrier1 box2 loc2 q2 q1):61023"/>
+                                                        <ExecuteAction action="(load_empty agent1 carrier1 box2 loc2 q2 q1):61023"/>
+                                                      </ReactiveSequence>
+                                                      <CheckAtEndReq action="(load_empty agent1 carrier1 box2 loc2 q2 q1):61023"/>
+                                                      <ApplyAtEndEffect action="(load_empty agent1 carrier1 box2 loc2 q2 q1):61023"/>
+                                                    </Sequence>
+                                                    <Sequence name="(move_carrier_to_warehouse agent1 carrier1 loc2 central_warehouse q0):63024">
+                                                      <Sequence name="(move_carrier_to_warehouse agent1 carrier1 loc2 central_warehouse q0):63024">
+                                                        <WaitAction action="(load_empty agent1 carrier1 box2 loc2 q2 q1):61023"/>
+                                                        <WaitAtStartReq action="(move_carrier_to_warehouse agent1 carrier1 loc2 central_warehouse q0):63024"/>
+                                                        <ApplyAtStartEffect action="(move_carrier_to_warehouse agent1 carrier1 loc2 central_warehouse q0):63024"/>
+                                                        <ReactiveSequence name="(move_carrier_to_warehouse agent1 carrier1 loc2 central_warehouse q0):63024">
+                                                          <CheckOverAllReq action="(move_carrier_to_warehouse agent1 carrier1 loc2 central_warehouse q0):63024"/>
+                                                          <ExecuteAction action="(move_carrier_to_warehouse agent1 carrier1 loc2 central_warehouse q0):63024"/>
+                                                        </ReactiveSequence>
+                                                        <CheckAtEndReq action="(move_carrier_to_warehouse agent1 carrier1 loc2 central_warehouse q0):63024"/>
+                                                        <ApplyAtEndEffect action="(move_carrier_to_warehouse agent1 carrier1 loc2 central_warehouse q0):63024"/>
+                                                      </Sequence>
+                                                      <Sequence name="(unload_empty agent1 carrier1 box2 central_warehouse q1 q2):68025">
+                                                        <Sequence name="(unload_empty agent1 carrier1 box2 central_warehouse q1 q2):68025">
+                                                          <WaitAction action="(move_carrier_to_warehouse agent1 carrier1 loc2 central_warehouse q0):63024"/>
+                                                          <WaitAction action="(empty agent1 box2 tool ws3 loc2):60022"/>
+                                                          <WaitAction action="(unload_empty agent1 carrier1 box2 central_warehouse q1 q2):46017"/>
+                                                          <WaitAtStartReq action="(unload_empty agent1 carrier1 box2 central_warehouse q1 q2):68025"/>
+                                                          <ApplyAtStartEffect action="(unload_empty agent1 carrier1 box2 central_warehouse q1 q2):68025"/>
+                                                          <ReactiveSequence name="(unload_empty agent1 carrier1 box2 central_warehouse q1 q2):68025">
+                                                            <CheckOverAllReq action="(unload_empty agent1 carrier1 box2 central_warehouse q1 q2):68025"/>
+                                                            <ExecuteAction action="(unload_empty agent1 carrier1 box2 central_warehouse q1 q2):68025"/>
+                                                          </ReactiveSequence>
+                                                          <CheckAtEndReq action="(unload_empty agent1 carrier1 box2 central_warehouse q1 q2):68025"/>
+                                                          <ApplyAtEndEffect action="(unload_empty agent1 carrier1 box2 central_warehouse q1 q2):68025"/>
+                                                        </Sequence>
+                                                        <Sequence name="(fill agent1 box2 valve central_warehouse):70026">
+                                                          <Sequence name="(fill agent1 box2 valve central_warehouse):70026">
+                                                            <WaitAction action="(unload_empty agent1 carrier1 box2 central_warehouse q1 q2):68025"/>
+                                                            <WaitAction action="(fill agent1 box2 tool central_warehouse):48018"/>
+                                                            <WaitAtStartReq action="(fill agent1 box2 valve central_warehouse):70026"/>
+                                                            <ApplyAtStartEffect action="(fill agent1 box2 valve central_warehouse):70026"/>
+                                                            <ReactiveSequence name="(fill agent1 box2 valve central_warehouse):70026">
+                                                              <CheckOverAllReq action="(fill agent1 box2 valve central_warehouse):70026"/>
+                                                              <ExecuteAction action="(fill agent1 box2 valve central_warehouse):70026"/>
+                                                            </ReactiveSequence>
+                                                            <CheckAtEndReq action="(fill agent1 box2 valve central_warehouse):70026"/>
+                                                            <ApplyAtEndEffect action="(fill agent1 box2 valve central_warehouse):70026"/>
+                                                          </Sequence>
+                                                          <Sequence name="(load_filled agent1 carrier1 box2 central_warehouse q2 q1 q0 q1 valve):71027">
+                                                            <Sequence name="(load_filled agent1 carrier1 box2 central_warehouse q2 q1 q0 q1 valve):71027">
+                                                              <WaitAction action="(fill agent1 box2 valve central_warehouse):70026"/>
+                                                              <WaitAtStartReq action="(load_filled agent1 carrier1 box2 central_warehouse q2 q1 q0 q1 valve):71027"/>
+                                                              <ApplyAtStartEffect action="(load_filled agent1 carrier1 box2 central_warehouse q2 q1 q0 q1 valve):71027"/>
+                                                              <ReactiveSequence name="(load_filled agent1 carrier1 box2 central_warehouse q2 q1 q0 q1 valve):71027">
+                                                                <CheckOverAllReq action="(load_filled agent1 carrier1 box2 central_warehouse q2 q1 q0 q1 valve):71027"/>
+                                                                <ExecuteAction action="(load_filled agent1 carrier1 box2 central_warehouse q2 q1 q0 q1 valve):71027"/>
+                                                              </ReactiveSequence>
+                                                              <CheckAtEndReq action="(load_filled agent1 carrier1 box2 central_warehouse q2 q1 q0 q1 valve):71027"/>
+                                                              <ApplyAtEndEffect action="(load_filled agent1 carrier1 box2 central_warehouse q2 q1 q0 q1 valve):71027"/>
+                                                            </Sequence>
+                                                            <Sequence name="(move_carrier_to_workstations agent1 carrier1 central_warehouse loc2):74028">
+                                                              <Sequence name="(move_carrier_to_workstations agent1 carrier1 central_warehouse loc2):74028">
+                                                                <WaitAction action="(load_filled agent1 carrier1 box2 central_warehouse q2 q1 q0 q1 valve):71027"/>
+                                                                <WaitAtStartReq action="(move_carrier_to_workstations agent1 carrier1 central_warehouse loc2):74028"/>
+                                                                <ApplyAtStartEffect action="(move_carrier_to_workstations agent1 carrier1 central_warehouse loc2):74028"/>
+                                                                <ReactiveSequence name="(move_carrier_to_workstations agent1 carrier1 central_warehouse loc2):74028">
+                                                                  <CheckOverAllReq action="(move_carrier_to_workstations agent1 carrier1 central_warehouse loc2):74028"/>
+                                                                  <ExecuteAction action="(move_carrier_to_workstations agent1 carrier1 central_warehouse loc2):74028"/>
+                                                                </ReactiveSequence>
+                                                                <CheckAtEndReq action="(move_carrier_to_workstations agent1 carrier1 central_warehouse loc2):74028"/>
+                                                                <ApplyAtEndEffect action="(move_carrier_to_workstations agent1 carrier1 central_warehouse loc2):74028"/>
+                                                              </Sequence>
+                                                              <Sequence name="(move_carrier_to_workstations agent1 carrier1 loc2 loc3):79029">
+                                                                <Sequence name="(move_carrier_to_workstations agent1 carrier1 loc2 loc3):79029">
+                                                                  <WaitAction action="(move_carrier_to_workstations agent1 carrier1 central_warehouse loc2):74028"/>
+                                                                  <WaitAction action="(move_carrier_to_warehouse agent1 carrier1 loc2 central_warehouse q0):63024"/>
+                                                                  <WaitAtStartReq action="(move_carrier_to_workstations agent1 carrier1 loc2 loc3):79029"/>
+                                                                  <ApplyAtStartEffect action="(move_carrier_to_workstations agent1 carrier1 loc2 loc3):79029"/>
+                                                                  <ReactiveSequence name="(move_carrier_to_workstations agent1 carrier1 loc2 loc3):79029">
+                                                                    <CheckOverAllReq action="(move_carrier_to_workstations agent1 carrier1 loc2 loc3):79029"/>
+                                                                    <ExecuteAction action="(move_carrier_to_workstations agent1 carrier1 loc2 loc3):79029"/>
+                                                                  </ReactiveSequence>
+                                                                  <CheckAtEndReq action="(move_carrier_to_workstations agent1 carrier1 loc2 loc3):79029"/>
+                                                                  <ApplyAtEndEffect action="(move_carrier_to_workstations agent1 carrier1 loc2 loc3):79029"/>
+                                                                </Sequence>
+                                                                <Sequence name="(unload_filled agent1 carrier1 box2 loc3 q1 q2 q1 q0 valve):84030">
+                                                                  <Sequence name="(unload_filled agent1 carrier1 box2 loc3 q1 q2 q1 q0 valve):84030">
+                                                                    <WaitAction action="(move_carrier_to_workstations agent1 carrier1 loc2 loc3):79029"/>
+                                                                    <WaitAction action="(fill agent1 box2 valve central_warehouse):70026"/>
+                                                                    <WaitAtStartReq action="(unload_filled agent1 carrier1 box2 loc3 q1 q2 q1 q0 valve):84030"/>
+                                                                    <ApplyAtStartEffect action="(unload_filled agent1 carrier1 box2 loc3 q1 q2 q1 q0 valve):84030"/>
+                                                                    <ReactiveSequence name="(unload_filled agent1 carrier1 box2 loc3 q1 q2 q1 q0 valve):84030">
+                                                                      <CheckOverAllReq action="(unload_filled agent1 carrier1 box2 loc3 q1 q2 q1 q0 valve):84030"/>
+                                                                      <ExecuteAction action="(unload_filled agent1 carrier1 box2 loc3 q1 q2 q1 q0 valve):84030"/>
+                                                                    </ReactiveSequence>
+                                                                    <CheckAtEndReq action="(unload_filled agent1 carrier1 box2 loc3 q1 q2 q1 q0 valve):84030"/>
+                                                                    <ApplyAtEndEffect action="(unload_filled agent1 carrier1 box2 loc3 q1 q2 q1 q0 valve):84030"/>
+                                                                  </Sequence>
+                                                                  <Sequence name="(unload_empty agent1 carrier1 box1 loc3 q2 q3):87031">
+                                                                    <Sequence name="(unload_empty agent1 carrier1 box1 loc3 q2 q3):87031">
+                                                                      <WaitAction action="(unload_filled agent1 carrier1 box2 loc3 q1 q2 q1 q0 valve):84030"/>
+                                                                      <WaitAction action="(move_carrier_to_workstations agent1 carrier1 loc2 loc3):79029"/>
+                                                                      <WaitAtStartReq action="(unload_empty agent1 carrier1 box1 loc3 q2 q3):87031"/>
+                                                                      <ApplyAtStartEffect action="(unload_empty agent1 carrier1 box1 loc3 q2 q3):87031"/>
+                                                                      <ReactiveSequence name="(unload_empty agent1 carrier1 box1 loc3 q2 q3):87031">
+                                                                        <CheckOverAllReq action="(unload_empty agent1 carrier1 box1 loc3 q2 q3):87031"/>
+                                                                        <ExecuteAction action="(unload_empty agent1 carrier1 box1 loc3 q2 q3):87031"/>
+                                                                      </ReactiveSequence>
+                                                                      <CheckAtEndReq action="(unload_empty agent1 carrier1 box1 loc3 q2 q3):87031"/>
+                                                                      <ApplyAtEndEffect action="(unload_empty agent1 carrier1 box1 loc3 q2 q3):87031"/>
+                                                                    </Sequence>
+                                                                    <Sequence name="(move_carrier_to_workstations agent1 carrier1 loc3 loc2):89032">
+                                                                      <Sequence name="(move_carrier_to_workstations agent1 carrier1 loc3 loc2):89032">
+                                                                        <WaitAction action="(unload_empty agent1 carrier1 box1 loc3 q2 q3):87031"/>
+                                                                        <WaitAtStartReq action="(move_carrier_to_workstations agent1 carrier1 loc3 loc2):89032"/>
+                                                                        <ApplyAtStartEffect action="(move_carrier_to_workstations agent1 carrier1 loc3 loc2):89032"/>
+                                                                        <ReactiveSequence name="(move_carrier_to_workstations agent1 carrier1 loc3 loc2):89032">
+                                                                          <CheckOverAllReq action="(move_carrier_to_workstations agent1 carrier1 loc3 loc2):89032"/>
+                                                                          <ExecuteAction action="(move_carrier_to_workstations agent1 carrier1 loc3 loc2):89032"/>
+                                                                        </ReactiveSequence>
+                                                                        <CheckAtEndReq action="(move_carrier_to_workstations agent1 carrier1 loc3 loc2):89032"/>
+                                                                        <ApplyAtEndEffect action="(move_carrier_to_workstations agent1 carrier1 loc3 loc2):89032"/>
+                                                                      </Sequence>
+                                                                      <Sequence name="(move_carrier_to_warehouse agent1 carrier1 loc2 central_warehouse q0):94033">
+                                                                        <Sequence name="(move_carrier_to_warehouse agent1 carrier1 loc2 central_warehouse q0):94033">
+                                                                          <WaitAction action="(move_carrier_to_workstations agent1 carrier1 loc3 loc2):89032"/>
+                                                                          <WaitAction action="(unload_filled agent1 carrier1 box2 loc3 q1 q2 q1 q0 valve):84030"/>
+                                                                          <WaitAction action="(move_carrier_to_warehouse agent1 carrier1 loc2 central_warehouse q0):63024"/>
+                                                                          <WaitAtStartReq action="(move_carrier_to_warehouse agent1 carrier1 loc2 central_warehouse q0):94033"/>
+                                                                          <ApplyAtStartEffect action="(move_carrier_to_warehouse agent1 carrier1 loc2 central_warehouse q0):94033"/>
+                                                                          <ReactiveSequence name="(move_carrier_to_warehouse agent1 carrier1 loc2 central_warehouse q0):94033">
+                                                                            <CheckOverAllReq action="(move_carrier_to_warehouse agent1 carrier1 loc2 central_warehouse q0):94033"/>
+                                                                            <ExecuteAction action="(move_carrier_to_warehouse agent1 carrier1 loc2 central_warehouse q0):94033"/>
+                                                                          </ReactiveSequence>
+                                                                          <CheckAtEndReq action="(move_carrier_to_warehouse agent1 carrier1 loc2 central_warehouse q0):94033"/>
+                                                                          <ApplyAtEndEffect action="(move_carrier_to_warehouse agent1 carrier1 loc2 central_warehouse q0):94033"/>
+                                                                        </Sequence>
+                                                                        <Sequence name="(unload_empty agent1 carrier1 box3 central_warehouse q3 q4):99034">
+                                                                          <Sequence name="(unload_empty agent1 carrier1 box3 central_warehouse q3 q4):99034">
+                                                                            <WaitAction action="(move_carrier_to_warehouse agent1 carrier1 loc2 central_warehouse q0):94033"/>
+                                                                            <WaitAction action="(empty agent1 box3 tool ws1 loc1):16006"/>
+                                                                            <WaitAtStartReq action="(unload_empty agent1 carrier1 box3 central_warehouse q3 q4):99034"/>
+                                                                            <ApplyAtStartEffect action="(unload_empty agent1 carrier1 box3 central_warehouse q3 q4):99034"/>
+                                                                            <ReactiveSequence name="(unload_empty agent1 carrier1 box3 central_warehouse q3 q4):99034">
+                                                                              <CheckOverAllReq action="(unload_empty agent1 carrier1 box3 central_warehouse q3 q4):99034"/>
+                                                                              <ExecuteAction action="(unload_empty agent1 carrier1 box3 central_warehouse q3 q4):99034"/>
+                                                                            </ReactiveSequence>
+                                                                            <CheckAtEndReq action="(unload_empty agent1 carrier1 box3 central_warehouse q3 q4):99034"/>
+                                                                            <ApplyAtEndEffect action="(unload_empty agent1 carrier1 box3 central_warehouse q3 q4):99034"/>
+                                                                          </Sequence>
+                                                                          <Sequence name="(fill agent1 box3 valve central_warehouse):101035">
+                                                                            <Sequence name="(fill agent1 box3 valve central_warehouse):101035">
+                                                                              <WaitAction action="(unload_empty agent1 carrier1 box3 central_warehouse q3 q4):99034"/>
+                                                                              <WaitAction action="(fill agent1 box3 tool central_warehouse):2000"/>
+                                                                              <WaitAtStartReq action="(fill agent1 box3 valve central_warehouse):101035"/>
+                                                                              <ApplyAtStartEffect action="(fill agent1 box3 valve central_warehouse):101035"/>
+                                                                              <ReactiveSequence name="(fill agent1 box3 valve central_warehouse):101035">
+                                                                                <CheckOverAllReq action="(fill agent1 box3 valve central_warehouse):101035"/>
+                                                                                <ExecuteAction action="(fill agent1 box3 valve central_warehouse):101035"/>
+                                                                              </ReactiveSequence>
+                                                                              <CheckAtEndReq action="(fill agent1 box3 valve central_warehouse):101035"/>
+                                                                              <ApplyAtEndEffect action="(fill agent1 box3 valve central_warehouse):101035"/>
+                                                                            </Sequence>
+                                                                            <Sequence name="(load_filled agent1 carrier1 box3 central_warehouse q4 q3 q0 q1 valve):102036">
+                                                                              <Sequence name="(load_filled agent1 carrier1 box3 central_warehouse q4 q3 q0 q1 valve):102036">
+                                                                                <WaitAction action="(fill agent1 box3 valve central_warehouse):101035"/>
+                                                                                <WaitAtStartReq action="(load_filled agent1 carrier1 box3 central_warehouse q4 q3 q0 q1 valve):102036"/>
+                                                                                <ApplyAtStartEffect action="(load_filled agent1 carrier1 box3 central_warehouse q4 q3 q0 q1 valve):102036"/>
+                                                                                <ReactiveSequence name="(load_filled agent1 carrier1 box3 central_warehouse q4 q3 q0 q1 valve):102036">
+                                                                                  <CheckOverAllReq action="(load_filled agent1 carrier1 box3 central_warehouse q4 q3 q0 q1 valve):102036"/>
+                                                                                  <ExecuteAction action="(load_filled agent1 carrier1 box3 central_warehouse q4 q3 q0 q1 valve):102036"/>
+                                                                                </ReactiveSequence>
+                                                                                <CheckAtEndReq action="(load_filled agent1 carrier1 box3 central_warehouse q4 q3 q0 q1 valve):102036"/>
+                                                                                <ApplyAtEndEffect action="(load_filled agent1 carrier1 box3 central_warehouse q4 q3 q0 q1 valve):102036"/>
+                                                                              </Sequence>
+                                                                              <Sequence name="(move_carrier_to_workstations agent1 carrier1 central_warehouse loc2):105037">
+                                                                                <Sequence name="(move_carrier_to_workstations agent1 carrier1 central_warehouse loc2):105037">
+                                                                                  <WaitAction action="(load_filled agent1 carrier1 box3 central_warehouse q4 q3 q0 q1 valve):102036"/>
+                                                                                  <WaitAtStartReq action="(move_carrier_to_workstations agent1 carrier1 central_warehouse loc2):105037"/>
+                                                                                  <ApplyAtStartEffect action="(move_carrier_to_workstations agent1 carrier1 central_warehouse loc2):105037"/>
+                                                                                  <ReactiveSequence name="(move_carrier_to_workstations agent1 carrier1 central_warehouse loc2):105037">
+                                                                                    <CheckOverAllReq action="(move_carrier_to_workstations agent1 carrier1 central_warehouse loc2):105037"/>
+                                                                                    <ExecuteAction action="(move_carrier_to_workstations agent1 carrier1 central_warehouse loc2):105037"/>
+                                                                                  </ReactiveSequence>
+                                                                                  <CheckAtEndReq action="(move_carrier_to_workstations agent1 carrier1 central_warehouse loc2):105037"/>
+                                                                                  <ApplyAtEndEffect action="(move_carrier_to_workstations agent1 carrier1 central_warehouse loc2):105037"/>
+                                                                                </Sequence>
+                                                                                <Sequence name="(unload_filled agent1 carrier1 box3 loc2 q3 q4 q1 q0 valve):110038">
+                                                                                  <Sequence name="(unload_filled agent1 carrier1 box3 loc2 q3 q4 q1 q0 valve):110038">
+                                                                                    <WaitAction action="(move_carrier_to_workstations agent1 carrier1 central_warehouse loc2):105037"/>
+                                                                                    <WaitAction action="(fill agent1 box3 valve central_warehouse):101035"/>
+                                                                                    <WaitAtStartReq action="(unload_filled agent1 carrier1 box3 loc2 q3 q4 q1 q0 valve):110038"/>
+                                                                                    <ApplyAtStartEffect action="(unload_filled agent1 carrier1 box3 loc2 q3 q4 q1 q0 valve):110038"/>
+                                                                                    <ReactiveSequence name="(unload_filled agent1 carrier1 box3 loc2 q3 q4 q1 q0 valve):110038">
+                                                                                      <CheckOverAllReq action="(unload_filled agent1 carrier1 box3 loc2 q3 q4 q1 q0 valve):110038"/>
+                                                                                      <ExecuteAction action="(unload_filled agent1 carrier1 box3 loc2 q3 q4 q1 q0 valve):110038"/>
+                                                                                    </ReactiveSequence>
+                                                                                    <CheckAtEndReq action="(unload_filled agent1 carrier1 box3 loc2 q3 q4 q1 q0 valve):110038"/>
+                                                                                    <ApplyAtEndEffect action="(unload_filled agent1 carrier1 box3 loc2 q3 q4 q1 q0 valve):110038"/>
+                                                                                  </Sequence>
+                                                                                  <Sequence name="(empty agent1 box3 valve ws3 loc2):113039">
+                                                                                    <Sequence name="(empty agent1 box3 valve ws3 loc2):113039">
+                                                                                      <WaitAction action="(unload_filled agent1 carrier1 box3 loc2 q3 q4 q1 q0 valve):110038"/>
+                                                                                      <WaitAtStartReq action="(empty agent1 box3 valve ws3 loc2):113039"/>
+                                                                                      <ApplyAtStartEffect action="(empty agent1 box3 valve ws3 loc2):113039"/>
+                                                                                      <ReactiveSequence name="(empty agent1 box3 valve ws3 loc2):113039">
+                                                                                        <CheckOverAllReq action="(empty agent1 box3 valve ws3 loc2):113039"/>
+                                                                                        <ExecuteAction action="(empty agent1 box3 valve ws3 loc2):113039"/>
+                                                                                      </ReactiveSequence>
+                                                                                      <CheckAtEndReq action="(empty agent1 box3 valve ws3 loc2):113039"/>
+                                                                                      <ApplyAtEndEffect action="(empty agent1 box3 valve ws3 loc2):113039"/>
+                                                                                    </Sequence>
+                                                                                    <Sequence name="(move_carrier_to_workstations agent1 carrier1 loc2 loc3):114040">
+                                                                                      <Sequence name="(move_carrier_to_workstations agent1 carrier1 loc2 loc3):114040">
+                                                                                        <WaitAction action="(empty agent1 box3 valve ws3 loc2):113039"/>
+                                                                                        <WaitAtStartReq action="(move_carrier_to_workstations agent1 carrier1 loc2 loc3):114040"/>
+                                                                                        <ApplyAtStartEffect action="(move_carrier_to_workstations agent1 carrier1 loc2 loc3):114040"/>
+                                                                                        <ReactiveSequence name="(move_carrier_to_workstations agent1 carrier1 loc2 loc3):114040">
+                                                                                          <CheckOverAllReq action="(move_carrier_to_workstations agent1 carrier1 loc2 loc3):114040"/>
+                                                                                          <ExecuteAction action="(move_carrier_to_workstations agent1 carrier1 loc2 loc3):114040"/>
+                                                                                        </ReactiveSequence>
+                                                                                        <CheckAtEndReq action="(move_carrier_to_workstations agent1 carrier1 loc2 loc3):114040"/>
+                                                                                        <ApplyAtEndEffect action="(move_carrier_to_workstations agent1 carrier1 loc2 loc3):114040"/>
+                                                                                      </Sequence>
+                                                                                      <Sequence name="(empty agent1 box2 valve ws4 loc3):119041">
+                                                                                        <WaitAction action="(move_carrier_to_workstations agent1 carrier1 loc2 loc3):114040"/>
+                                                                                        <WaitAction action="(move_carrier_to_workstations agent1 carrier1 loc3 loc2):89032"/>
+                                                                                        <WaitAtStartReq action="(empty agent1 box2 valve ws4 loc3):119041"/>
+                                                                                        <ApplyAtStartEffect action="(empty agent1 box2 valve ws4 loc3):119041"/>
+                                                                                        <ReactiveSequence name="(empty agent1 box2 valve ws4 loc3):119041">
+                                                                                          <CheckOverAllReq action="(empty agent1 box2 valve ws4 loc3):119041"/>
+                                                                                          <ExecuteAction action="(empty agent1 box2 valve ws4 loc3):119041"/>
+                                                                                        </ReactiveSequence>
+                                                                                        <CheckAtEndReq action="(empty agent1 box2 valve ws4 loc3):119041"/>
+                                                                                        <ApplyAtEndEffect action="(empty agent1 box2 valve ws4 loc3):119041"/>
+                                                                                      </Sequence>
+                                                                                    </Sequence>
+                                                                                  </Sequence>
+                                                                                </Sequence>
+                                                                              </Sequence>
+                                                                            </Sequence>
+                                                                          </Sequence>
+                                                                        </Sequence>
+                                                                      </Sequence>
+                                                                    </Sequence>
+                                                                  </Sequence>
+                                                                </Sequence>
+                                                              </Sequence>
+                                                            </Sequence>
+                                                          </Sequence>
+                                                        </Sequence>
+                                                      </Sequence>
+                                                    </Sequence>
+                                                  </Sequence>
+                                                </Sequence>
+                                              </Sequence>
+                                            </Sequence>
+                                          </Sequence>
+                                        </Sequence>
+                                      </Sequence>
+                                    </Sequence>
+                                  </Sequence>
+                                </Sequence>
+                              </Sequence>
+                            </Sequence>
+                          </Sequence>
+                        </Sequence>
+                      </Sequence>
+                    </Sequence>
+                  </Sequence>
+                </Sequence>
+              </Sequence>
+            </Sequence>
+          </Sequence>
+        </Sequence>
+      </Sequence>
+    </Sequence>
+  </BehaviorTree>
+</root>

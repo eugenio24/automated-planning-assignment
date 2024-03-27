@@ -1,0 +1,466 @@
+(define (domain domain3)
+
+(:requirements :strips :typing :negative-preconditions :hierachie)
+
+(:types
+    location - object                           ; locations
+    warehouse ws_location - location    ; there can't be workstation in warehouse
+
+    locatable - object      ; parent type for agents, supplies, boxes, workstations, carriers
+                            ; to allow located(locatable, location)
+
+    agent - locatable       ; the robotic agents
+    agent_type_1 drone - agent
+
+    carrier - locatable     ; the carrier for the agents
+
+    supply - locatable      ; supplies needed by the workstations
+
+    box - locatable         ; boxes containing needed supplies
+
+    workstation - locatable ; there are a number of workstations
+
+    quantity - object       ; quantity type, used fot the increase/decrease and keep track of capacity
+)
+
+(:constants
+    q0 - quantity  ; empty quantity constant
+)
+
+(:predicates
+    (connected ?l1 ?l2 - location)          ; location ?l1 is connected to ?l2 - the "roadmap"
+
+    (located ?x - locatable ?l - location) ; ?x is at location ?l
+
+    (contains ?b - box ?s - supply)         ; box ?b contains supply ?s
+    (isempty ?b - box)                      ; box ?b is empty
+
+    (loaded ?c - carrier ?b - box)          ; box ?b is loaded on carrier ?c
+    (unloaded ?b - box)                     ; box ?b is unloaded, not on an agent
+
+    (has ?w - workstation ?s - supply)      ; workstation ?w has supply ?s
+    (needs ?w - workstation ?s - supply)     ; workstation ?w needs supply ?s
+
+    (has_carrier ?a - agent ?c - carrier)       ; agent ?a has carrier ?c
+
+    ; increment decrement predicates
+    (inc ?q ?q_new - quantity)
+    (dec ?q ?q_new - quantity)
+
+    ; predicate to handle the capacity of the carrier
+    (available_slots ?c - carrier ?q - quantity)        ; true <=> ?c has ?q available spots left 
+                                                                ; available_slots(?c q0) == TRUE -> ?c is full
+    
+    ; predicate to keep track of the number of filled boxes in the carrier
+    ; used for checking when the agent can go back to warehouse, that is when he finished the deliveries, so no filled boxes
+    (current_filled_boxes ?c - carrier ?q - quantity)
+)
+
+;;; ---------------------
+;;; tasks
+;;; ---------------------
+
+(:task deliver
+    :parameters (?s - supply ?w - workstation)
+    :precondition ()
+    :effect ()
+)
+
+(:task find_carrier
+    :parameters (?a - agent ?c - carrier ?l - location)
+    :precondition ()
+    :effect ()
+)
+
+(:task fill_load_supply
+    :parameters (?a - agent ?c - carrier ?b - box ?s - supply)
+    :precondition ()
+    :effect ()
+)
+
+(:task go_to_deliver
+    :parameters (?a - agent ?c - carrier ?w - workstation ?l - location)
+    :precondition ()
+    :effect ()
+)
+
+(:task unload_empty_supply
+    :parameters (?a - agent ?c - carrier ?b - box ?s - supply ?w - workstation)
+    :precondition ()
+    :effect ()
+)
+
+(:task back_to_warehouse
+    :parameters (?a - agent ?c - carrier ?deliver_loc - ws_location ?start_loc - warehouse)
+    :precondition ()
+    :effect ()
+)
+
+;;; ---------------------
+;;; methods
+;;; ---------------------
+
+(:method m_deliver_1_supply
+    :parameters (?s - supply ?w - workstation ?a - agent ?c - carrier ?start_loc - location ?carrier_loc - location ?deliver_loc - ws_location ?b - box ?q ?q_new - quantity)
+    :task (deliver ?s ?w)
+    :subtasks (and
+        (task0 (find_carrier ?a ?c ?start_loc))
+        (task1 (back_to_warehouse ?a ?c ?carrier_loc ?start_loc))
+        (task2 (fill_load_supply ?a ?c ?b ?s))
+        (task3 (go_to_deliver ?a ?c ?w ?start_loc))
+        (task4 (unload_empty_supply ?a ?c ?b ?s ?w))
+        (task5 (load-empty ?a ?c ?b ?deliver_loc ?q ?q_new))    ; load the empty box before going back to warehouse
+        (task6 (back_to_warehouse ?a ?c ?deliver_loc ?start_loc))
+        (task7 (unload-empty ?a ?c ?b ?start_loc ?q_new ?q))    ; unload the box we bringed back
+    )
+    :ordering (and
+        (task0 < task1)
+        (task1 < task2)
+        (task2 < task3)
+        (task3 < task4)
+        (task4 < task5)
+        (task5 < task6)
+        (task6 < task7)
+    )
+)
+
+(:method m_find_carrier
+    :parameters (?a - agent ?c - carrier ?from ?to - location)
+    :task (find_carrier ?a ?c ?from)
+    :subtasks (and        
+        (task0 (move-to-carrier ?a ?c ?from ?to))
+    )
+)
+
+(:method m_find_carrier_via
+    :parameters (?a - agent ?c - carrier ?from ?to - location)
+    :task (find_carrier ?a ?c ?from)
+    :subtasks (and
+        (task0 (find_carrier ?a ?c ?to))
+        (task1 (move-to-carrier ?a ?c ?from ?to))
+    )
+    :ordering (and
+        (task0 < task1) 
+    )
+)
+
+(:method m_find_carrier_base
+    :parameters (?a - agent ?c - carrier ?from ?to - location)
+    :task (find_carrier ?a ?c ?from)
+    :subtasks (and
+        (task0 (noop_agent_to_carrier ?a ?c ?from))
+    )
+)
+
+(:method m_fill_load_supply
+    :parameters (?a - agent ?c - carrier ?b - box ?s - supply ?l - location ?q ?q_new ?n ?n_new - quantity)
+    :task (fill_load_supply ?a ?c ?b ?s)    
+    :subtasks (and
+        (task0 (fill ?a ?b ?s ?l))
+        (task1 (load-filled ?a ?c ?b ?l ?q ?q_new ?n ?n_new))
+    )
+    :ordering (and
+        (task0 < task1) 
+    )
+)
+
+(:method m_go_to_deliver
+    :parameters (?a - agent ?c - carrier ?w - workstation ?from - location ?to - ws_location)
+    :task (go_to_deliver ?a ?c ?w ?from)
+    :subtasks (and
+        (task0 (move-carrier-to-workstations ?a ?c ?from ?to))
+    )
+)
+
+(:method m_go_to_deliver_via
+    :parameters (?a - agent ?c - carrier ?w - workstation ?from - location ?to - ws_location)
+    :task (go_to_deliver ?a ?c ?w ?from)
+    :subtasks (and
+        (task0 (move-carrier-to-workstations ?a ?c ?from ?to))
+        (task1 (go_to_deliver ?a ?c ?w ?to))
+    )
+    :ordering (and
+        (task0 < task1) 
+    )
+)
+
+(:method m_go_to_deliver_base
+    :parameters (?a - agent ?c - carrier ?w - workstation ?from - location ?to - ws_location)
+    :task (go_to_deliver ?a ?c ?w ?from)
+    :subtasks (and
+        (task0 (noop_agent_to_deliver ?a ?c ?w ?from))
+    )
+)
+
+(:method m_unload_empty_supply
+    :parameters (?a - agent ?c - carrier ?b - box ?s - supply ?l - location ?q ?q_new ?n ?n_new - quantity ?w - workstation)
+    :task (unload_empty_supply ?a ?c ?b ?s ?w)    
+    :subtasks (and
+        (task0 (unload-filled ?a ?c ?b ?l ?q ?q_new ?n ?n_new))
+        (task1 (empty ?a ?b ?s ?w ?l))
+    )
+    :ordering (and
+        (task0 < task1) 
+    )
+)
+
+(:method m_back_to_warehouse
+    :parameters (?a - agent ?c - carrier ?from - location ?to - warehouse)
+    :task (back_to_warehouse ?a ?c ?from ?to)
+    :subtasks (and        
+        (task0 (move-carrier-to-warehouse ?a ?c ?from ?to))
+    )
+)
+
+(:method m_back_to_warehouse_via
+    :parameters (?a - agent ?c - carrier ?from - location ?to - warehouse)
+    :task (back_to_warehouse ?a ?c ?from ?to)
+    :subtasks (and
+        (task0 (back_to_warehouse ?a ?c ?from))
+        (task1 (move-carrier-to-warehouse ?a ?c ?from ?to))
+    )
+    :ordering (and
+        (task0 < task1) 
+    )
+)
+
+(:method m_back_to_warehouse_base
+    :parameters (?a - agent ?c - carrier ?from - location ?to - warehouse)
+    :task (back_to_warehouse ?a ?c ?from ?to)
+    :subtasks (and
+        (task0 (noop_agent_back_warehouse ?a ?c ?to))
+    )
+)
+
+;;; ---------------------
+;;; noops
+;;; ---------------------
+
+
+(:action noop_agent_to_carrier
+    :parameters (?a - agent ?c - carrier ?l - location)
+    :precondition (and
+        (located ?a ?l)
+        (located ?c ?l)
+    )
+    :effect ()
+)
+
+(:action noop_agent_to_deliver
+    :parameters (?a - agent ?c - carrier ?w - workstation ?l - ws_location)
+    :precondition (and
+        (located ?a ?l)
+        (located ?c ?l)
+        (located ?w ?l)
+    )
+    :effect ()
+)
+
+(:action noop_agent_back_warehouse
+    :parameters (?a - agent ?c - carrier ?l - warehouse)
+    :precondition (and
+        (located ?a ?l)
+        (located ?c ?l)
+    )
+    :effect ()
+)
+
+;;; ---------------------
+;;; primitive actions
+;;; ---------------------
+
+; ;;; ---------------------
+; ;;; fill empty actions
+; ;;; ---------------------
+
+
+; ; agent ?a fills box ?b with supply ?s at location ?l
+(:action fill
+    :parameters (?a - agent ?b - box ?s - supply ?l - location)
+    :precondition (and 
+        (located ?a ?l) (located ?b ?l) (located ?s ?l)     ; agent, box, supply in the same location
+        (isempty ?b) (unloaded ?b)                          ; box empty and unloaded
+    )
+    :effect (and 
+        (not (isempty ?b)) (contains ?b ?s)
+    )
+)
+
+; ; agent ?a empty box ?b in location ?l, leaving supply ?s to workstation ?w
+(:action empty
+    :parameters (?a - agent ?b - box ?s - supply ?w - workstation ?l - location)
+    :precondition (and 
+        (located ?a ?l) (located ?b ?l) (located ?w ?l)     ; agent, box, workstation in the same location
+        (contains ?b ?s) (needs ?w ?s)                      ; box must contain the needed supply for the workstation
+        (unloaded ?b)                                       ; box unloaded
+    )
+    :effect (and 
+        (has ?w ?s) (not (needs ?w ?s))         ; cause the workstation to have it 
+        (not (contains ?b ?s)) (isempty ?b)     ; and the box becomes empty 
+    )
+)
+
+
+; ;;; ---------------------
+; ;;; move action for agent, when it moves without the carrier
+; ;;; If for some reason initially the agent is not in the same location of the carrier
+; ;;; this action is used, after the agent reaches the carrier, they always moves together
+; ;;; ---------------------
+
+(:action move-to-carrier
+    :parameters (?a - agent ?c - carrier ?from ?to - location)
+    :precondition (and 
+        (located ?a ?from)          ; agent must be in ?from
+        (not (located ?c ?from))    ; carrier must not be in ?from
+        (has_carrier ?a ?c)         ; ?c must be ?a carrier
+
+        (connected ?from ?to)       ; ?from, ?to must be connected
+    )
+    :effect (and 
+        (not (located ?a ?from)) (located ?a ?to)
+    )
+)
+
+
+; ;;; ---------------------
+; ;;; move actions for agent moving the carrier
+; ;;; ---------------------
+
+; ; agent ?a moves carrier ?c from location ?from to location ?to, 
+; ; where ?to is not the warehouse
+(:action move-carrier-to-workstations
+    :parameters (?a - agent ?c - carrier ?from - location ?to - ws_location)
+    :precondition (and 
+        (located ?a ?from)                  ; agent must be in ?from
+        (located ?c ?from)                  ; carrier ?c must be agent ?a carrier
+        (connected ?from ?to)               ; ?from, ?to must be connected
+        (has_carrier ?a ?c)                 ; ?c must be ?a carrier
+        
+        ; an agent can move to a workstation location also without filled boxes
+        ; for example it may go to a workstation-location to load empty boxes and bring them back to warehouse
+        ; so I don't add the following precondition: (not (current_filled_boxes ?c q0))
+    )  
+    :effect (and 
+        (not (located ?a ?from)) (located ?a ?to) 
+        (not (located ?c ?from)) (located ?c ?to)
+    )
+)
+
+; ; agent ?a moves carrier ?c from location ?from to warehouse ?to, 
+; ; to return at warehouse the carrier must be without filled boxes (it must have no more supply to deliver)
+(:action move-carrier-to-warehouse
+    :parameters (?a - agent ?c - carrier ?from - location ?to - warehouse)
+    :precondition (and 
+        (located ?a ?from)              ; agent must be in ?from
+        (located ?c ?from)              ; carrier ?c must be agent ?a carrier
+        (connected ?from ?to)           ; ?from, ?to must be connected 
+        (has_carrier ?a ?c)             ; ?c must be ?a carrier
+        (current_filled_boxes ?c q0)    ; agent can go back to warehouse only if carrier has no supplies left to deliver
+    )    
+    :effect (and                        ; update agent and carrier position
+        (not (located ?a ?from)) (located ?a ?to)
+        (not (located ?c ?from)) (located ?c ?to)
+    )
+)
+
+
+; ;;; ---------------------
+; ;;; load unload actions
+; ;;; since not all planners support the conditional effect (if the box is filled or not gives me different effects),
+; ;;; so, I duplicated the actions for the empty boxes and the filled box 
+; ;;; ---------------------
+
+; ; agent ?a loads filled box ?b on carrier ?c at location ?l
+(:action load-filled
+    :parameters (?a - agent ?c - carrier ?b - box ?l - location ?q ?q_new ?n ?n_new - quantity)
+    :precondition (and 
+        (located ?a ?l) (located ?b ?l) (located ?c ?l) ; agent, box, carrier in the same location
+        (has_carrier ?a ?c)                             ; carrier ?c must be agent ?a carrier
+        (unloaded ?b)                                   ; box unloaded 
+        (not (isempty ?b))                              ; box must be filled
+        
+        (available_slots ?c ?q)
+        (dec ?q ?q_new)
+        (not (= ?q q0))                   ; check if carrier not full
+
+        (current_filled_boxes ?c ?n)
+        (inc ?n ?n_new)
+    )
+    :effect (and
+        (loaded ?c ?b) (not (unloaded ?b))      ; box is loaded
+        (not (located ?b ?l))                   ; box no more at l
+
+        (available_slots ?c ?q_new) (not (available_slots ?c ?q))   ; update quantity in carrier
+
+        (current_filled_boxes ?c ?n_new)    ; increase the number of filled boxes
+        (not (current_filled_boxes ?c ?n))
+    )
+)
+
+; ; agent ?a loads empty box ?b on carrier ?c at location ?l
+(:action load-empty
+    :parameters (?a - agent ?c - carrier ?b - box ?l - location ?q ?q_new - quantity)
+    :precondition (and 
+        (located ?a ?l) (located ?b ?l) (located ?c ?l) ; agent, box, carrier in the same location
+        (has_carrier ?a ?c)                             ; carrier ?c must be agent ?a carrier
+        (unloaded ?b)                                   ; box unloaded 
+        (isempty ?b)                                    ; box must be empty
+        
+        (available_slots ?c ?q)
+        (dec ?q ?q_new)
+        (not (= ?q q0))                   ; check if carrier not full
+    )
+    :effect (and
+        (loaded ?c ?b) (not (unloaded ?b))      ; box is loaded
+        (not (located ?b ?l))                   ; box no more at l
+
+        (available_slots ?c ?q_new) (not (available_slots ?c ?q))   ; update quantity in carrier
+    )
+)
+
+; ; agent ?a unloads filled box ?b from carrier ?c at location ?l
+(:action unload-filled
+    :parameters (?a - agent ?c - carrier ?b - box ?l - location ?q ?q_new ?n ?n_new - quantity)
+    :precondition (and 
+        (located ?a ?l) (located ?c ?l)     ; agent, carrier in the same location  
+        (has_carrier ?a ?c)                 ; carrier ?c must be agent ?a carrier
+        (loaded ?c ?b)                      ; box ?b should be loaded on carrier ?c
+        (not (isempty ?b))                  ; box must be filled
+        
+        (available_slots ?c ?q)
+        (inc ?q ?q_new)
+
+        (current_filled_boxes ?c ?n)
+        (dec ?n ?n_new)
+    )
+    :effect (and 
+        (unloaded ?b) (not (loaded ?c ?b))  ; box is unloaded
+        (located ?b ?l)                     ; box is now located at unload location
+
+        (available_slots ?c ?q_new) (not (available_slots ?c ?q))   ; update quantity in carrier
+
+        (current_filled_boxes ?c ?n_new)    ; decrease the number of filled boxes
+        (not (current_filled_boxes ?c ?n))
+    )
+)
+
+; ; agent ?a unloads empty box ?b from carrier ?c at location ?l
+(:action unload-empty
+    :parameters (?a - agent ?c - carrier ?b - box ?l - location ?q ?q_new - quantity)
+    :precondition (and 
+        (located ?a ?l) (located ?c ?l)     ; agent, carrier in the same location  
+        (has_carrier ?a ?c)                 ; carrier ?c must be agent ?a carrier
+        (loaded ?c ?b)                      ; box ?b should be loaded on carrier ?c
+        (isempty ?b)                        ; box must be empty
+        
+        (available_slots ?c ?q)
+        (inc ?q ?q_new)
+    )
+    :effect (and 
+        (unloaded ?b) (not (loaded ?c ?b))  ; box is unloaded
+        (located ?b ?l)                     ; box is now located at unload location
+        (available_slots ?c ?q_new) (not (available_slots ?c ?q))   ; update quantity in carrier
+    )
+)
+
+)

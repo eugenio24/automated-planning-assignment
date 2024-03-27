@@ -1,0 +1,94 @@
+set instance central_warehouse warehouse 
+
+set instance loc1 ws_location
+set instance loc2 ws_location
+set instance loc3 ws_location
+
+set instance box1 box
+set instance box2 box 
+set instance box3 box
+
+set instance ws1 workstation
+set instance ws2 workstation
+set instance ws3 workstation
+set instance ws4 workstation
+
+set instance agent1 agent
+
+set instance carrier1 carrier
+
+set instance bolt supply 
+set instance valve supply
+set instance tool supply
+
+set instance q0 quantity
+set instance q1 quantity
+set instance q2 quantity
+set instance q3 quantity
+set instance q4 quantity
+
+
+
+set predicate (located box1 central_warehouse)
+set predicate (located box2 central_warehouse)
+set predicate (located box3 central_warehouse)
+
+set predicate (isempty box1)
+set predicate (unloaded box1)
+set predicate (isempty box2)
+set predicate (unloaded box2)
+set predicate (isempty box3)
+set predicate (unloaded box3)
+
+set predicate (located bolt central_warehouse)
+set predicate (located valve central_warehouse)
+set predicate (located tool central_warehouse)
+
+set predicate (located agent1 central_warehouse)
+set predicate (located carrier1 central_warehouse)
+set predicate (notlocated carrier1 loc1)
+set predicate (notlocated carrier1 loc2)
+set predicate (notlocated carrier1 loc3)
+
+set predicate (not_busy agent1)
+
+set predicate (has_carrier agent1 carrier1)
+
+set predicate (available_slots carrier1 q4)
+set predicate (current_filled_boxes carrier1 q0)
+
+set predicate (located ws1 loc1)
+set predicate (located ws2 loc2)
+set predicate (located ws3 loc2)
+set predicate (located ws4 loc3)
+
+set predicate (connected central_warehouse loc1)
+set predicate (connected loc1 central_warehouse)
+set predicate (connected central_warehouse loc2)
+set predicate (connected loc2 central_warehouse)
+set predicate (connected loc3 loc2)
+set predicate (connected loc2 loc3)
+
+set predicate (needs ws1 tool)
+set predicate (needs ws3 bolt)
+set predicate (needs ws3 valve)
+set predicate (needs ws3 tool)
+set predicate (needs ws4 valve)
+
+set predicate (inc q0 q1)
+set predicate (inc q1 q2)
+set predicate (inc q2 q3)
+set predicate (inc q3 q4)
+set predicate (dec q4 q3)
+set predicate (dec q3 q2)
+set predicate (dec q2 q1)
+set predicate (dec q1 q0)
+
+set predicate (is_zero q0)
+set predicate (is_not_zero q1)
+set predicate (is_not_zero q2)
+set predicate (is_not_zero q3)
+set predicate (is_not_zero q4)
+
+
+set goal (and (has ws1 tool) (has ws3 bolt) (has ws3 valve) (has ws3 tool) (has ws4 valve))

@@ -1,0 +1,258 @@
+Parsing...
+Contains quantified condition(s): False
+Instantiating...
+Trivial rules: Converted to facts.
+Starting instantiation [151 rules]...
+Finding invariants...
+Finding invariants... 30 initial candidates
+[0.040s CPU, 0.036s wall-clock]
+Checking invariant weight... [0.000s CPU, 0.000s wall-clock]
+Instantiating groups...
+Choosing groups...
+70 uncovered facts (before using the results from the invariant synthesis)
+32 uncovered facts
+Building translation key...
+Building STRIPS to SAS dictionary...
+Translating task...
+Processing axioms...
+Found 0 axioms that are always true and 0 that are always false
+constrained 4971 conditions
+Writing output...
+Done!
+contains_quantified_conditions: 0
+Building causal graph...
+The causal graph is not acyclic.
+variable var37 is not necessary!
+48 variables of 49 necessary
+1284 of 1284 operators necessary.
+0 of 0 Axiom_relational rules necessary.
+0 of 0 Axiom_functional rules necessary.
+Building domain transition graphs...
+solveable in poly time 0
+Building successor generator...
+all_operator_indices.size(): 1284
+Writing output...
+printing SG 
+48
+done
+
+
+Planner Paramters:
+Anytime Search: Disabled
+Timeout if plan was found: 0 seconds (no timeout)
+Timeout while no plan was found: 0 seconds (no timeout)
+Greedy Search: Disabled
+Verbose: Enabled
+Lazy Heuristic Evaluation: Enabled
+Use caching in heuristic.
+Cyclic CG heuristic: Enabled 	Preferred Operators: Enabled
+Makespan heuristic: Disabled 	Preferred Operators: Disabled
+No Heuristic: Disabled
+Cg Heuristic Zero Cost Waiting Transitions: Enabled
+Cg Heuristic Fire Waiting Transitions Only If Local Problems Matches State: Disabled
+PrefOpsOrderedMode: Enabled with 1 goals
+PrefOpsCheapestMode: Enabled with 1 goals
+PrefOpsMostExpensiveMode: Disabled with 1000 goals
+PrefOpsRandMode: Disabled with 1000 goals
+PrefOpsConcurrentMode: Disabled
+Reset after solution was found: Enabled
+Reward only preferred operators queue: Disabled
+GValues by: Timestamp
+Queue management mode: Priority based
+Known by logical state only filtering: Disabled
+use_subgoals_to_break_makespan_ties: Disabled
+Reschedule plans: Enabled
+Epsilonize internally: Enabled
+Epsilonize externally: Disabled
+Keep original plans: Enabled
+Plan name: "./output_plan"
+Plan monitor file: "" (no monitoring)
+Monitoring verify timestamps: Disabled
+
+Contains universal conditions: 0
+Giving prior boost to open list 0
+INIT
+Open list sizes (priorities): 0 (-5000),  0 (0),  0 (0),  0 (0), 
+Initializing cyclic causal graph heuristic...done.
+Best heuristic values of queues: 131/-1/-1/-1 [expanded 1 state(s)]
+Best heuristic values of queues: 122.98/-1/-1/-1 [expanded 4 state(s)]
+Best heuristic values of queues: 121/-1/-1/-1 [expanded 5 state(s)]
+Best heuristic values of queues: 103.98/-1/-1/-1 [expanded 96 state(s)]
+Best heuristic values of queues: 102.98/-1/-1/-1 [expanded 180 state(s)]
+Best heuristic values of queues: 99.98/-1/-1/-1 [expanded 182 state(s)]
+Best heuristic values of queues: 86.98/-1/-1/-1 [expanded 197 state(s)]
+Best heuristic values of queues: 82.98/-1/-1/-1 [expanded 205 state(s)]
+Best heuristic values of queues: 82/-1/-1/-1 [expanded 206 state(s)]
+Best heuristic values of queues: 73.98/-1/-1/-1 [expanded 208 state(s)]
+Best heuristic values of queues: 70.98/-1/-1/-1 [expanded 211 state(s)]
+Best heuristic values of queues: 66.98/-1/-1/-1 [expanded 225 state(s)]
+Best heuristic values of queues: 62.98/-1/-1/-1 [expanded 259 state(s)]
+Best heuristic values of queues: 61/-1/-1/-1 [expanded 260 state(s)]
+Best heuristic values of queues: 56.98/-1/-1/-1 [expanded 262 state(s)]
+Best heuristic values of queues: 53.98/-1/-1/-1 [expanded 271 state(s)]
+Best heuristic values of queues: 49.98/-1/-1/-1 [expanded 279 state(s)]
+Best heuristic values of queues: 29.98/-1/-1/-1 [expanded 301 state(s)]
+Best heuristic values of queues: 29/-1/-1/-1 [expanded 302 state(s)]
+Best heuristic values of queues: 28.98/-1/-1/-1 [expanded 303 state(s)]
+Best heuristic values of queues: 26/-1/-1/-1 [expanded 304 state(s)]
+Best heuristic values of queues: 22.98/-1/-1/-1 [expanded 329 state(s)]
+Best heuristic values of queues: 22/-1/-1/-1 [expanded 330 state(s)]
+Best heuristic values of queues: 11.98/-1/-1/-1 [expanded 331 state(s)]
+Best heuristic values of queues: 7/-1/-1/-1 [expanded 332 state(s)]
+Best heuristic values of queues: 3.98/-1/-1/-1 [expanded 333 state(s)]
+Best heuristic values of queues: 1/-1/-1/-1 [expanded 334 state(s)]
+Best heuristic values of queues: 0/-1/-1/-1 [expanded 336 state(s)]
+New solution has been found.
+
+Found new plan:
+0.00000000: (fill agent1 box2 tool central_warehouse) [1.00000000]
+1.01000000: (fill agent1 box3 tool central_warehouse) [1.00000000]
+2.02000000: (load-empty agent1 carrier1 box1 central_warehouse q4 q3) [2.00000000]
+4.03000000: (move-carrier-to-workstations agent1 carrier1 central_warehouse loc1) [5.00000000]
+9.04000000: (unload-empty agent1 carrier1 box1 loc1 q3 q4) [2.00000000]
+11.05000000: (move-carrier-to-warehouse agent1 carrier1 loc1 central_warehouse) [5.00000000]
+16.06000000: (load-filled agent1 carrier1 box3 central_warehouse q4 q3 q0 q1 tool) [3.00000000]
+19.07000000: (move-carrier-to-workstations agent1 carrier1 central_warehouse loc1) [5.00000000]
+24.08000000: (unload-filled agent1 carrier1 box3 loc1 q3 q4 q1 q0 tool) [3.00000000]
+27.09000000: (empty agent1 box3 tool ws1 loc1) [1.00000000]
+28.10000000: (load-empty agent1 carrier1 box1 loc1 q4 q3) [2.00000000]
+30.11000000: (move-carrier-to-warehouse agent1 carrier1 loc1 central_warehouse) [5.00000000]
+35.12000000: (move-carrier-to-workstations agent1 carrier1 central_warehouse loc2) [5.00000000]
+40.13000000: (unload-empty agent1 carrier1 box1 loc2 q3 q4) [2.00000000]
+42.14000000: (move-carrier-to-warehouse agent1 carrier1 loc2 central_warehouse) [5.00000000]
+47.15000000: (load-filled agent1 carrier1 box2 central_warehouse q4 q3 q0 q1 tool) [3.00000000]
+50.16000000: (move-carrier-to-workstations agent1 carrier1 central_warehouse loc2) [5.00000000]
+55.17000000: (unload-filled agent1 carrier1 box2 loc2 q3 q4 q1 q0 tool) [3.00000000]
+58.18000000: (load-empty agent1 carrier1 box1 loc2 q4 q3) [2.00000000]
+60.19000000: (empty agent1 box2 tool ws3 loc2) [1.00000000]
+61.20000000: (load-empty agent1 carrier1 box2 loc2 q3 q2) [2.00000000]
+63.21000000: (move-carrier-to-warehouse agent1 carrier1 loc2 central_warehouse) [5.00000000]
+68.22000000: (unload-empty agent1 carrier1 box2 central_warehouse q2 q3) [2.00000000]
+70.23000000: (fill agent1 box2 bolt central_warehouse) [1.00000000]
+71.24000000: (move-carrier-to-workstations agent1 carrier1 central_warehouse loc2) [5.00000000]
+76.25000000: (unload-empty agent1 carrier1 box1 loc2 q3 q4) [2.00000000]
+78.26000000: (move-carrier-to-warehouse agent1 carrier1 loc2 central_warehouse) [5.00000000]
+83.27000000: (load-filled agent1 carrier1 box2 central_warehouse q4 q3 q0 q1 bolt) [3.00000000]
+86.28000000: (move-carrier-to-workstations agent1 carrier1 central_warehouse loc2) [5.00000000]
+91.29000000: (unload-filled agent1 carrier1 box2 loc2 q3 q4 q1 q0 bolt) [3.00000000]
+94.30000000: (empty agent1 box2 bolt ws3 loc2) [1.00000000]
+95.31000000: (load-empty agent1 carrier1 box1 loc2 q4 q3) [2.00000000]
+97.32000000: (load-empty agent1 carrier1 box2 loc2 q3 q2) [2.00000000]
+99.33000000: (move-carrier-to-warehouse agent1 carrier1 loc2 central_warehouse) [5.00000000]
+104.34000000: (unload-empty agent1 carrier1 box2 central_warehouse q2 q3) [2.00000000]
+106.35000000: (fill agent1 box2 valve central_warehouse) [1.00000000]
+107.36000000: (unload-empty agent1 carrier1 box1 central_warehouse q3 q4) [2.00000000]
+109.37000000: (fill agent1 box1 valve central_warehouse) [1.00000000]
+110.38000000: (load-filled agent1 carrier1 box1 central_warehouse q4 q3 q0 q1 valve) [3.00000000]
+113.39000000: (move-carrier-to-workstations agent1 carrier1 central_warehouse loc2) [5.00000000]
+118.40000000: (unload-filled agent1 carrier1 box1 loc2 q3 q4 q1 q0 valve) [3.00000000]
+121.41000000: (empty agent1 box1 valve ws3 loc2) [1.00000000]
+122.42000000: (move-carrier-to-warehouse agent1 carrier1 loc2 central_warehouse) [5.00000000]
+127.43000000: (load-filled agent1 carrier1 box2 central_warehouse q4 q3 q0 q1 valve) [3.00000000]
+130.44000000: (move-carrier-to-workstations agent1 carrier1 central_warehouse loc2) [5.00000000]
+135.45000000: (move-carrier-to-workstations agent1 carrier1 loc2 loc3) [5.00000000]
+140.46000000: (unload-filled agent1 carrier1 box2 loc3 q3 q4 q1 q0 valve) [3.00000000]
+143.47000000: (empty agent1 box2 valve ws4 loc3) [1.00000000]
+Rescheduled Plan:
+0.00100000: (fill agent1 box2 tool central_warehouse) [1.00000000]
+1.01100000: (fill agent1 box3 tool central_warehouse) [1.00000000]
+2.02100000: (load-empty agent1 carrier1 box1 central_warehouse q4 q3) [2.00000000]
+4.03100000: (move-carrier-to-workstations agent1 carrier1 central_warehouse loc1) [5.00000000]
+9.04100000: (unload-empty agent1 carrier1 box1 loc1 q3 q4) [2.00000000]
+11.05100000: (move-carrier-to-warehouse agent1 carrier1 loc1 central_warehouse) [5.00000000]
+16.06100000: (load-filled agent1 carrier1 box3 central_warehouse q4 q3 q0 q1 tool) [3.00000000]
+19.07100000: (move-carrier-to-workstations agent1 carrier1 central_warehouse loc1) [5.00000000]
+24.08100000: (unload-filled agent1 carrier1 box3 loc1 q3 q4 q1 q0 tool) [3.00000000]
+27.09100000: (empty agent1 box3 tool ws1 loc1) [1.00000000]
+28.10100000: (load-empty agent1 carrier1 box1 loc1 q4 q3) [2.00000000]
+30.11100000: (move-carrier-to-warehouse agent1 carrier1 loc1 central_warehouse) [5.00000000]
+35.12100000: (move-carrier-to-workstations agent1 carrier1 central_warehouse loc2) [5.00000000]
+40.13100000: (unload-empty agent1 carrier1 box1 loc2 q3 q4) [2.00000000]
+42.14100000: (move-carrier-to-warehouse agent1 carrier1 loc2 central_warehouse) [5.00000000]
+47.15100000: (load-filled agent1 carrier1 box2 central_warehouse q4 q3 q0 q1 tool) [3.00000000]
+50.16100000: (move-carrier-to-workstations agent1 carrier1 central_warehouse loc2) [5.00000000]
+55.17100000: (unload-filled agent1 carrier1 box2 loc2 q3 q4 q1 q0 tool) [3.00000000]
+58.18100000: (load-empty agent1 carrier1 box1 loc2 q4 q3) [2.00000000]
+60.19100000: (empty agent1 box2 tool ws3 loc2) [1.00000000]
+61.20100000: (load-empty agent1 carrier1 box2 loc2 q3 q2) [2.00000000]
+63.21100000: (move-carrier-to-warehouse agent1 carrier1 loc2 central_warehouse) [5.00000000]
+68.22100000: (unload-empty agent1 carrier1 box2 central_warehouse q2 q3) [2.00000000]
+70.23100000: (fill agent1 box2 bolt central_warehouse) [1.00000000]
+71.24100000: (move-carrier-to-workstations agent1 carrier1 central_warehouse loc2) [5.00000000]
+76.25100000: (unload-empty agent1 carrier1 box1 loc2 q3 q4) [2.00000000]
+78.26100000: (move-carrier-to-warehouse agent1 carrier1 loc2 central_warehouse) [5.00000000]
+83.27100000: (load-filled agent1 carrier1 box2 central_warehouse q4 q3 q0 q1 bolt) [3.00000000]
+86.28100000: (move-carrier-to-workstations agent1 carrier1 central_warehouse loc2) [5.00000000]
+91.29100000: (unload-filled agent1 carrier1 box2 loc2 q3 q4 q1 q0 bolt) [3.00000000]
+94.30100000: (empty agent1 box2 bolt ws3 loc2) [1.00000000]
+95.31100000: (load-empty agent1 carrier1 box1 loc2 q4 q3) [2.00000000]
+97.32100000: (load-empty agent1 carrier1 box2 loc2 q3 q2) [2.00000000]
+99.33100000: (move-carrier-to-warehouse agent1 carrier1 loc2 central_warehouse) [5.00000000]
+104.34100000: (unload-empty agent1 carrier1 box2 central_warehouse q2 q3) [2.00000000]
+106.35100000: (fill agent1 box2 valve central_warehouse) [1.00000000]
+107.36100000: (unload-empty agent1 carrier1 box1 central_warehouse q3 q4) [2.00000000]
+109.37100000: (fill agent1 box1 valve central_warehouse) [1.00000000]
+110.38100000: (load-filled agent1 carrier1 box1 central_warehouse q4 q3 q0 q1 valve) [3.00000000]
+113.39100000: (move-carrier-to-workstations agent1 carrier1 central_warehouse loc2) [5.00000000]
+118.40100000: (unload-filled agent1 carrier1 box1 loc2 q3 q4 q1 q0 valve) [3.00000000]
+121.41100000: (empty agent1 box1 valve ws3 loc2) [1.00000000]
+122.42100000: (move-carrier-to-warehouse agent1 carrier1 loc2 central_warehouse) [5.00000000]
+127.43100000: (load-filled agent1 carrier1 box2 central_warehouse q4 q3 q0 q1 valve) [3.00000000]
+130.44100000: (move-carrier-to-workstations agent1 carrier1 central_warehouse loc2) [5.00000000]
+135.45100000: (move-carrier-to-workstations agent1 carrier1 loc2 loc3) [5.00000000]
+140.46100000: (unload-filled agent1 carrier1 box2 loc3 q3 q4 q1 q0 valve) [3.00000000]
+143.47100000: (empty agent1 box2 valve ws4 loc3) [1.00000000]
+Solution with original makespan 144.47 found (ignoring no-moving-targets-rule).
+Plan length: 48 step(s).
+Makespan   : 144.471
+Rescheduled Makespan   : 144.471
+Search time: 0.41 seconds - Walltime: 0.637295 seconds
+Total time: 0.44 seconds - Walltime: 0.677903 seconds
+0.00100000: (fill agent1 box2 tool central_warehouse) [1.00000000]
+1.01100000: (fill agent1 box3 tool central_warehouse) [1.00000000]
+2.02100000: (load-empty agent1 carrier1 box1 central_warehouse q4 q3) [2.00000000]
+4.03100000: (move-carrier-to-workstations agent1 carrier1 central_warehouse loc1) [5.00000000]
+9.04100000: (unload-empty agent1 carrier1 box1 loc1 q3 q4) [2.00000000]
+11.05100000: (move-carrier-to-warehouse agent1 carrier1 loc1 central_warehouse) [5.00000000]
+16.06100000: (load-filled agent1 carrier1 box3 central_warehouse q4 q3 q0 q1 tool) [3.00000000]
+19.07100000: (move-carrier-to-workstations agent1 carrier1 central_warehouse loc1) [5.00000000]
+24.08100000: (unload-filled agent1 carrier1 box3 loc1 q3 q4 q1 q0 tool) [3.00000000]
+27.09100000: (empty agent1 box3 tool ws1 loc1) [1.00000000]
+28.10100000: (load-empty agent1 carrier1 box1 loc1 q4 q3) [2.00000000]
+30.11100000: (move-carrier-to-warehouse agent1 carrier1 loc1 central_warehouse) [5.00000000]
+35.12100000: (move-carrier-to-workstations agent1 carrier1 central_warehouse loc2) [5.00000000]
+40.13100000: (unload-empty agent1 carrier1 box1 loc2 q3 q4) [2.00000000]
+42.14100000: (move-carrier-to-warehouse agent1 carrier1 loc2 central_warehouse) [5.00000000]
+47.15100000: (load-filled agent1 carrier1 box2 central_warehouse q4 q3 q0 q1 tool) [3.00000000]
+50.16100000: (move-carrier-to-workstations agent1 carrier1 central_warehouse loc2) [5.00000000]
+55.17100000: (unload-filled agent1 carrier1 box2 loc2 q3 q4 q1 q0 tool) [3.00000000]
+58.18100000: (load-empty agent1 carrier1 box1 loc2 q4 q3) [2.00000000]
+60.19100000: (empty agent1 box2 tool ws3 loc2) [1.00000000]
+61.20100000: (load-empty agent1 carrier1 box2 loc2 q3 q2) [2.00000000]
+63.21100000: (move-carrier-to-warehouse agent1 carrier1 loc2 central_warehouse) [5.00000000]
+68.22100000: (unload-empty agent1 carrier1 box2 central_warehouse q2 q3) [2.00000000]
+70.23100000: (fill agent1 box2 bolt central_warehouse) [1.00000000]
+71.24100000: (move-carrier-to-workstations agent1 carrier1 central_warehouse loc2) [5.00000000]
+76.25100000: (unload-empty agent1 carrier1 box1 loc2 q3 q4) [2.00000000]
+78.26100000: (move-carrier-to-warehouse agent1 carrier1 loc2 central_warehouse) [5.00000000]
+83.27100000: (load-filled agent1 carrier1 box2 central_warehouse q4 q3 q0 q1 bolt) [3.00000000]
+86.28100000: (move-carrier-to-workstations agent1 carrier1 central_warehouse loc2) [5.00000000]
+91.29100000: (unload-filled agent1 carrier1 box2 loc2 q3 q4 q1 q0 bolt) [3.00000000]
+94.30100000: (empty agent1 box2 bolt ws3 loc2) [1.00000000]
+95.31100000: (load-empty agent1 carrier1 box1 loc2 q4 q3) [2.00000000]
+97.32100000: (load-empty agent1 carrier1 box2 loc2 q3 q2) [2.00000000]
+99.33100000: (move-carrier-to-warehouse agent1 carrier1 loc2 central_warehouse) [5.00000000]
+104.34100000: (unload-empty agent1 carrier1 box2 central_warehouse q2 q3) [2.00000000]
+106.35100000: (fill agent1 box2 valve central_warehouse) [1.00000000]
+107.36100000: (unload-empty agent1 carrier1 box1 central_warehouse q3 q4) [2.00000000]
+109.37100000: (fill agent1 box1 valve central_warehouse) [1.00000000]
+110.38100000: (load-filled agent1 carrier1 box1 central_warehouse q4 q3 q0 q1 valve) [3.00000000]
+113.39100000: (move-carrier-to-workstations agent1 carrier1 central_warehouse loc2) [5.00000000]
+118.40100000: (unload-filled agent1 carrier1 box1 loc2 q3 q4 q1 q0 valve) [3.00000000]
+121.41100000: (empty agent1 box1 valve ws3 loc2) [1.00000000]
+122.42100000: (move-carrier-to-warehouse agent1 carrier1 loc2 central_warehouse) [5.00000000]
+127.43100000: (load-filled agent1 carrier1 box2 central_warehouse q4 q3 q0 q1 valve) [3.00000000]
+130.44100000: (move-carrier-to-workstations agent1 carrier1 central_warehouse loc2) [5.00000000]
+135.45100000: (move-carrier-to-workstations agent1 carrier1 loc2 loc3) [5.00000000]
+140.46100000: (unload-filled agent1 carrier1 box2 loc3 q3 q4 q1 q0 valve) [3.00000000]
+143.47100000: (empty agent1 box2 valve ws4 loc3) [1.00000000]
